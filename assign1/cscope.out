@@ -1,0 +1,1178 @@
+cscope 15 $HOME/development/c/assign1               0000006942
+	@dberror.c
+
+1 
+	~"db”rÜ.h
+"
+
+3 
+	~<¡ršg.h
+>
+
+4 
+	~<¡dlib.h
+>
+
+5 
+	~<¡dio.h
+>
+
+7 *
+	gRC_mes§ge
+;
+
+11 
+	$´štE¼Ü
+ (
+RC
+ 
+”rÜ
+)
+
+13 ià(
+RC_mes§ge
+ !ğ
+NULL
+)
+
+14 
+	`´štf
+("EC (%i), \"%s\"\n", 
+”rÜ
+, 
+RC_mes§ge
+);
+
+16 
+	`´štf
+("EC (%i)\n", 
+”rÜ
+);
+
+17 
+	}
+}
+
+20 
+	$”rÜMes§ge
+ (
+RC
+ 
+”rÜ
+)
+
+22 *
+mes§ge
+;
+
+24 ià(
+RC_mes§ge
+ !ğ
+NULL
+)
+
+26 
+mes§ge
+ = (*è
+	`m®loc
+(
+	`¡¾’
+(
+RC_mes§ge
+) + 30);
+
+27 
+	`¥rštf
+(
+mes§ge
+, "EC (%i), \"%s\"\n", 
+”rÜ
+, 
+RC_mes§ge
+);
+
+31 
+mes§ge
+ = (*è
+	`m®loc
+(30);
+
+32 
+	`¥rštf
+(
+mes§ge
+, "EC (%i)\n", 
+”rÜ
+);
+
+35  
+mes§ge
+;
+
+36 
+	}
+}
+
+	@dberror.h
+
+1 #iâdeà
+DBERROR_H
+
+
+2 
+	#DBERROR_H
+
+
+	)
+
+4 
+	~"¡dio.h
+"
+
+7 
+	#PAGE_SIZE
+ 4096
+
+	)
+
+10 
+	tRC
+;
+
+12 
+	#RC_OK
+ 0
+
+	)
+
+13 
+	#RC_FILE_NOT_FOUND
+ 1
+
+	)
+
+14 
+	#RC_FILE_HANDLE_NOT_INIT
+ 2
+
+	)
+
+15 
+	#RC_WRITE_FAILED
+ 3
+
+	)
+
+16 
+	#RC_READ_NON_EXISTING_PAGE
+ 4
+
+	)
+
+18 
+	#RC_RM_COMPARE_VALUE_OF_DIFFERENT_DATATYPE
+ 200
+
+	)
+
+19 
+	#RC_RM_EXPR_RESULT_IS_NOT_BOOLEAN
+ 201
+
+	)
+
+20 
+	#RC_RM_BOOLEAN_EXPR_ARG_IS_NOT_BOOLEAN
+ 202
+
+	)
+
+21 
+	#RC_RM_NO_MORE_TUPLES
+ 203
+
+	)
+
+22 
+	#RC_RM_NO_PRINT_FOR_DATATYPE
+ 204
+
+	)
+
+23 
+	#RC_RM_UNKOWN_DATATYPE
+ 205
+
+	)
+
+25 
+	#RC_IM_KEY_NOT_FOUND
+ 300
+
+	)
+
+26 
+	#RC_IM_KEY_ALREADY_EXISTS
+ 301
+
+	)
+
+27 
+	#RC_IM_N_TO_LAGE
+ 302
+
+	)
+
+28 
+	#RC_IM_NO_MORE_ENTRIES
+ 303
+
+	)
+
+31 *
+RC_mes§ge
+;
+
+34 
+´štE¼Ü
+ (
+RC
+ 
+”rÜ
+);
+
+35 *
+”rÜMes§ge
+ (
+RC
+ 
+”rÜ
+);
+
+37 
+	#THROW
+(
+rc
+,
+mes§ge
+) \
+
+39 
+RC_mes§ge
+=
+mes§ge
+; \
+
+40  
+rc
+; \
+
+42 
+
+	)
+
+44 
+	#CHECK
+(
+code
+) \
+
+46 
+rc_š‹º®
+ = (
+code
+); \
+
+47 ià(
+rc_š‹º®
+ !ğ
+RC_OK
+) \
+
+49 *
+mes§ge
+ = 
+	`”rÜMes§ge
+(
+rc_š‹º®
+); \
+
+50 
+	`´štf
+("[%s-L%i-%s] ERROR: O³¿tiÚ„‘uºedƒ¼Ü: %s\n",
+__FILE__
+, 
+__LINE__
+, 
+__TIME__
+, 
+mes§ge
+); \
+
+51 
+	`ä“
+(
+mes§ge
+); \
+
+52 
+	`ex™
+(1); \
+
+54 } 0);
+
+	)
+
+	@storage_mgr.h
+
+1 #iâdeà
+STORAGE_MGR_H
+
+
+2 
+	#STORAGE_MGR_H
+
+
+	)
+
+4 
+	~"db”rÜ.h
+"
+
+9 
+	sSM_FeHªdË
+ {
+
+10 *
+	mfeName
+;
+
+11 
+	mtÙ®NumPages
+;
+
+12 
+	mcurPagePos
+;
+
+13 *
+	mmgmtInfo
+;
+
+14 } 
+	tSM_FeHªdË
+;
+
+16 * 
+	tSM_PageHªdË
+;
+
+22 
+š™StÜageMªag”
+ ();
+
+23 
+RC
+ 
+ü—‹PageFe
+ (*
+feName
+);
+
+24 
+RC
+ 
+İ’PageFe
+ (*
+feName
+, 
+SM_FeHªdË
+ *
+fHªdË
+);
+
+25 
+RC
+ 
+şo£PageFe
+ (
+SM_FeHªdË
+ *
+fHªdË
+);
+
+26 
+RC
+ 
+de¡royPageFe
+ (*
+feName
+);
+
+29 
+RC
+ 
+»adBlock
+ (
+·geNum
+, 
+SM_FeHªdË
+ *
+fHªdË
+, 
+SM_PageHªdË
+ 
+memPage
+);
+
+30 
+g‘BlockPos
+ (
+SM_FeHªdË
+ *
+fHªdË
+);
+
+31 
+RC
+ 
+»adFœ¡Block
+ (
+SM_FeHªdË
+ *
+fHªdË
+, 
+SM_PageHªdË
+ 
+memPage
+);
+
+32 
+RC
+ 
+»adP»viousBlock
+ (
+SM_FeHªdË
+ *
+fHªdË
+, 
+SM_PageHªdË
+ 
+memPage
+);
+
+33 
+RC
+ 
+»adCu¼’tBlock
+ (
+SM_FeHªdË
+ *
+fHªdË
+, 
+SM_PageHªdË
+ 
+memPage
+);
+
+34 
+RC
+ 
+»adNextBlock
+ (
+SM_FeHªdË
+ *
+fHªdË
+, 
+SM_PageHªdË
+ 
+memPage
+);
+
+35 
+RC
+ 
+»adLa¡Block
+ (
+SM_FeHªdË
+ *
+fHªdË
+, 
+SM_PageHªdË
+ 
+memPage
+);
+
+38 
+RC
+ 
+wr™eBlock
+ (
+·geNum
+, 
+SM_FeHªdË
+ *
+fHªdË
+, 
+SM_PageHªdË
+ 
+memPage
+);
+
+39 
+RC
+ 
+wr™eCu¼’tBlock
+ (
+SM_FeHªdË
+ *
+fHªdË
+, 
+SM_PageHªdË
+ 
+memPage
+);
+
+40 
+RC
+ 
+­³ndEm±yBlock
+ (
+SM_FeHªdË
+ *
+fHªdË
+);
+
+41 
+RC
+ 
+’su»C­ac™y
+ (
+numb”OfPages
+, 
+SM_FeHªdË
+ *
+fHªdË
+);
+
+	@test_assign1_1.c
+
+1 
+	~<¡dio.h
+>
+
+2 
+	~<¡dlib.h
+>
+
+3 
+	~<¡ršg.h
+>
+
+4 
+	~<uni¡d.h
+>
+
+6 
+	~"¡Üage_mgr.h
+"
+
+7 
+	~"db”rÜ.h
+"
+
+8 
+	~"‹¡_h–³r.h
+"
+
+11 *
+	g‹¡Name
+;
+
+14 
+	#TESTPF
+ "‹¡_·gefe.bš"
+
+	)
+
+17 
+‹¡C»©eO³nClo£
+();
+
+18 
+‹¡SšgËPageCÚ‹Á
+();
+
+22 
+	$maš
+ ()
+
+24 
+‹¡Name
+ = "";
+
+26 
+	`š™StÜageMªag”
+();
+
+28 
+	`‹¡C»©eO³nClo£
+();
+
+29 
+	`‹¡SšgËPageCÚ‹Á
+();
+
+32 
+	}
+}
+
+38 
+	$‹¡C»©eO³nClo£
+()
+
+40 
+SM_FeHªdË
+ 
+fh
+;
+
+42 
+‹¡Name
+ = "test create open‡nd close methods";
+
+44 
+	`TEST_CHECK
+(
+	`ü—‹PageFe
+ (
+TESTPF
+));
+
+46 
+	`TEST_CHECK
+(
+	`İ’PageFe
+ (
+TESTPF
+, &
+fh
+));
+
+47 
+	`ASSERT_TRUE
+(
+	`¡rcmp
+(
+fh
+.
+feName
+, 
+TESTPF
+) == 0, "filename correct");
+
+48 
+	`ASSERT_TRUE
+((
+fh
+.
+tÙ®NumPages
+ == 1), "expect 1…age in‚ew file");
+
+49 
+	`ASSERT_TRUE
+((
+fh
+.
+curPagePos
+ == 0), "freshly opened file's…age…osition should be 0");
+
+51 
+	`TEST_CHECK
+(
+	`şo£PageFe
+ (&
+fh
+));
+
+52 
+	`TEST_CHECK
+(
+	`de¡royPageFe
+ (
+TESTPF
+));
+
+55 
+	`ASSERT_TRUE
+((
+	`İ’PageFe
+(
+TESTPF
+, &
+fh
+è!ğ
+RC_OK
+), "opening‚on-existing file should„eturn‡nƒrror.");
+
+57 
+	`TEST_DONE
+();
+
+58 
+	}
+}
+
+62 
+	$‹¡SšgËPageCÚ‹Á
+()
+
+64 
+SM_FeHªdË
+ 
+fh
+;
+
+65 
+SM_PageHªdË
+ 
+ph
+;
+
+66 
+i
+;
+
+68 
+‹¡Name
+ = "test single…age content";
+
+70 
+ph
+ = (
+SM_PageHªdË
+è
+	`m®loc
+(
+PAGE_SIZE
+);
+
+73 
+	`TEST_CHECK
+(
+	`ü—‹PageFe
+ (
+TESTPF
+));
+
+74 
+	`TEST_CHECK
+(
+	`İ’PageFe
+ (
+TESTPF
+, &
+fh
+));
+
+75 
+	`´štf
+("created‡nd opened file\n");
+
+78 
+	`TEST_CHECK
+(
+	`»adFœ¡Block
+ (&
+fh
+, 
+ph
+));
+
+80 
+i
+=0; i < 
+PAGE_SIZE
+; i++)
+
+81 
+	`ASSERT_TRUE
+((
+ph
+[
+i
+] == 0), "expected zero byte in first…age of freshly initialized…age");
+
+82 
+	`´štf
+("first block wasƒmpty\n");
+
+85 
+i
+=0; i < 
+PAGE_SIZE
+; i++)
+
+86 
+ph
+[
+i
+] = (i % 10) + '0';
+
+87 
+	`TEST_CHECK
+(
+	`wr™eBlock
+ (0, &
+fh
+, 
+ph
+));
+
+88 
+	`´štf
+("writing first block\n");
+
+91 
+	`TEST_CHECK
+(
+	`»adFœ¡Block
+ (&
+fh
+, 
+ph
+));
+
+92 
+i
+=0; i < 
+PAGE_SIZE
+; i++)
+
+93 
+	`ASSERT_TRUE
+((
+ph
+[
+i
+] == (i % 10) + '0'), "character in…age„ead from disk ishe one weƒxpected.");
+
+94 
+	`´štf
+("reading first block\n");
+
+97 
+	`TEST_CHECK
+(
+	`de¡royPageFe
+ (
+TESTPF
+));
+
+99 
+	`TEST_DONE
+();
+
+100 
+	}
+}
+
+	@test_helper.h
+
+1 #iâdeà
+TEST_HELPER_H
+
+
+2 
+	#TEST_HELPER_H
+
+
+	)
+
+4 
+	~<¡dio.h
+>
+
+5 
+	~<¡dlib.h
+>
+
+6 
+	~<¡ršg.h
+>
+
+7 
+	~<time.h
+>
+
+10 *
+‹¡Name
+;
+
+13 
+	#TEST_INFO
+ 
+__FILE__
+, 
+‹¡Name
+, 
+__LINE__
+, 
+__TIME__
+
+
+	)
+
+16 
+	#TEST_CHECK
+(
+code
+) \
+
+18 
+rc_š‹º®
+ = (
+code
+); \
+
+19 ià(
+rc_š‹º®
+ !ğ
+RC_OK
+) \
+
+21 *
+mes§ge
+ = 
+	`”rÜMes§ge
+(
+rc_š‹º®
+); \
+
+22 
+	`´štf
+("[%s-%s-L%i-%s] FAILED: O³¿tiÚ„‘uºedƒ¼Ü: %s\n",
+TEST_INFO
+, 
+mes§ge
+); \
+
+23 
+	`ä“
+(
+mes§ge
+); \
+
+24 
+	`ex™
+(1); \
+
+26 } 0);
+
+	)
+
+29 
+	#ASSERT_EQUALS_STRING
+(
+ex³ùed
+,
+»®
+,
+mes§ge
+) \
+
+31 ià(
+	`¡rcmp
+((
+ex³ùed
+),(
+»®
+)) != 0) \
+
+33 
+	`´štf
+("[%s-%s-L%i-%s] FAILED:ƒx³ùed <%s> buˆwa <%s>: %s\n",
+TEST_INFO
+, 
+ex³ùed
+, 
+»®
+, 
+mes§ge
+); \
+
+34 
+	`ex™
+(1); \
+
+36 
+	`´štf
+("[%s-%s-L%i-%s] OK:ƒx³ùed <%s>‡nd wa <%s>: %s\n",
+TEST_INFO
+, 
+ex³ùed
+, 
+»®
+, 
+mes§ge
+); \
+
+37 } 0)
+
+	)
+
+40 
+	#ASSERT_EQUALS_INT
+(
+ex³ùed
+,
+»®
+,
+mes§ge
+) \
+
+42 ià((
+ex³ùed
+è!ğ(
+»®
+)) \
+
+44 
+	`´štf
+("[%s-%s-L%i-%s] FAILED:ƒx³ùed <%i> buˆwa <%i>: %s\n",
+TEST_INFO
+, 
+ex³ùed
+, 
+»®
+, 
+mes§ge
+); \
+
+45 
+	`ex™
+(1); \
+
+47 
+	`´štf
+("[%s-%s-L%i-%s] OK:ƒx³ùed <%i>‡nd wa <%i>: %s\n",
+TEST_INFO
+, 
+ex³ùed
+, 
+»®
+, 
+mes§ge
+); \
+
+48 } 0)
+
+	)
+
+51 
+	#ASSERT_TRUE
+(
+»®
+,
+mes§ge
+) \
+
+53 ià(!(
+»®
+)) \
+
+55 
+	`´štf
+("[%s-%s-L%i-%s] FAILED:ƒx³ùedrue: %s\n",
+TEST_INFO
+, 
+mes§ge
+); \
+
+56 
+	`ex™
+(1); \
+
+58 
+	`´štf
+("[%s-%s-L%i-%s] OK:ƒx³ùedrue: %s\n",
+TEST_INFO
+, 
+mes§ge
+); \
+
+59 } 0)
+
+	)
+
+63 
+	#ASSERT_ERROR
+(
+ex³ùed
+,
+mes§ge
+) \
+
+65 
+»suÉ
+ = (
+ex³ùed
+); \
+
+66 ià(
+»suÉ
+ =ğ(
+RC_OK
+)) \
+
+68 
+	`´štf
+("[%s-%s-L%i-%s] FAILED:ƒx³ùed‡À”rÜ: %s\n",
+TEST_INFO
+, 
+mes§ge
+); \
+
+69 
+	`ex™
+(1); \
+
+71 
+	`´štf
+("[%s-%s-L%i-%s] OK:ƒx³ùed‡À”rÜ‡nd wa RC <%i>: %s\n",
+TEST_INFO
+, 
+»suÉ
+ , 
+mes§ge
+); \
+
+72 } 0)
+
+	)
+
+75 
+	#TEST_DONE
+() \
+
+77 
+	`´štf
+("[%s-%s-L%i-%s] OK: fšishede¡\n\n",
+TEST_INFO
+); \
+
+78 } 0)
+
+	)
+
+	@
+1
+.
+0
+5
+65
+dberror.c
+dberror.h
+storage_mgr.h
+test_assign1_1.c
+test_helper.h
