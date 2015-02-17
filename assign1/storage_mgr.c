@@ -63,7 +63,7 @@ RC openPageFile(char *fileName, SM_FileHandle *fHandle)
 				{
 						fHandle->fileName = fileName;
 						fHandle->curPagePos = 0;  //set the first page 0;
-						fHandle->totalNumPages = sizeof(fo)/PAGE_SIZE; 
+						fHandle->totalNumPages = sizeof(fo)/PAGE_SIZE+1; 
 						fHandle->mgmtInfo = fo;    //mgmtInfo store the pointer to the file stream;
 						return RC_OK;
 				}
@@ -169,7 +169,7 @@ RC readFirstBlock(SM_FileHandle *fHandle, SM_PageHandle memPage)
  ***************************************************************/
 RC readPreviousBlock(SM_FileHandle *fHandle, SM_PageHandle memPage)
 {
-		readBlock((fHandle->curPagePos-1),fHandle,memPage);
+		readBlock((fHandle->curPagePos-2),fHandle,memPage);
 }
 
 
@@ -180,7 +180,7 @@ RC readPreviousBlock(SM_FileHandle *fHandle, SM_PageHandle memPage)
  ***************************************************************/
 RC readCurrentBlock(SM_FileHandle *fHandle, SM_PageHandle memPage)
 {
-		readBlock((fHandle->curPagePos),fHandle,memPage);
+		readBlock((fHandle->curPagePos-1),fHandle,memPage);
 }
 
 
@@ -191,7 +191,7 @@ RC readCurrentBlock(SM_FileHandle *fHandle, SM_PageHandle memPage)
  ***************************************************************/
 RC readNextBlock(SM_FileHandle *fHandle, SM_PageHandle memPage)
 {
-		readBlock((fHandle->curPagePos+1),fHandle,memPage);
+		readBlock((fHandle->curPagePos),fHandle,memPage);
 }
 
 
@@ -202,7 +202,7 @@ RC readNextBlock(SM_FileHandle *fHandle, SM_PageHandle memPage)
  ***************************************************************/
 RC readLastBlock(SM_FileHandle *fHandle, SM_PageHandle memPage)
 {
-		readBlock((fHandle->totalNumPages),fHandle,memPage);
+		readBlock((fHandle->totalNumPages-1),fHandle,memPage);
 }
 
 /*********************************************************************
