@@ -1,9 +1,8 @@
-#include "dberror.h"
-
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 
+#include "dberror.h"
 char *RC_message;
 
 /* print a message to standard out describing the error */
