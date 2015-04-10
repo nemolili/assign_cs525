@@ -63,7 +63,8 @@ RC openPageFile(char *fileName, SM_FileHandle *fHandle)
 				{
 						fHandle->fileName = fileName;
 						fHandle->curPagePos = 0;  //set the first page 0;
-						fHandle->totalNumPages = sizeof(fo)/PAGE_SIZE+1; 
+						fseek(fo,0L,SEEK_END);
+						fHandle->totalNumPages = ftell(fo)/PAGE_SIZE; 
 						fHandle->mgmtInfo = fo;    //mgmtInfo store the pointer to the file stream;
 						return RC_OK;
 				}
@@ -127,15 +128,16 @@ RC readBlock(int pageNum, SM_FileHandle *fHandle, SM_PageHandle memPage)
 			FILE* fo = fopen(fHandle->fileName,"r+");
 			fHandle->mgmtInfo = fo;  //store the file stream in the fHandle;
 		}
-		else
-		{
-		}
-		if(fseek(fHandle->mgmtInfo,(pageNum)*PAGE_SIZE,SEEK_SET)==0) //locate the strat position to read the content from the file;
+		if(fseek(fHandle->mgmtInfo,(pageNum)*PAGE_SIZE,SEEK_SET)==0) //locate the start position to read the content from the file;
 		{
 				fread(memPage,sizeof(char),PAGE_SIZE,fHandle->mgmtInfo); //read the block and store the content pointed to the memPage page handle;
 				fclose(fHandle->mgmtInfo);  //After read the block, close the file stream;
 				fHandle->mgmtInfo = NULL;
 				return RC_OK;
+		}
+		else
+		{
+				return RC_WRITE_FAILED;
 		}
 }
 
@@ -158,7 +160,7 @@ int getBlockPos(SM_FileHandle *fHandle)
  ***************************************************************/
 RC readFirstBlock(SM_FileHandle *fHandle, SM_PageHandle memPage)
 {
-		readBlock(0,fHandle,memPage);
+		return readBlock(0,fHandle,memPage);
 }
 
 
@@ -169,7 +171,7 @@ RC readFirstBlock(SM_FileHandle *fHandle, SM_PageHandle memPage)
  ***************************************************************/
 RC readPreviousBlock(SM_FileHandle *fHandle, SM_PageHandle memPage)
 {
-		readBlock((fHandle->curPagePos-2),fHandle,memPage);
+		return readBlock((fHandle->curPagePos-2),fHandle,memPage);
 }
 
 
@@ -180,7 +182,7 @@ RC readPreviousBlock(SM_FileHandle *fHandle, SM_PageHandle memPage)
  ***************************************************************/
 RC readCurrentBlock(SM_FileHandle *fHandle, SM_PageHandle memPage)
 {
-		readBlock((fHandle->curPagePos-1),fHandle,memPage);
+		return readBlock((fHandle->curPagePos-1),fHandle,memPage);
 }
 
 
@@ -191,7 +193,7 @@ RC readCurrentBlock(SM_FileHandle *fHandle, SM_PageHandle memPage)
  ***************************************************************/
 RC readNextBlock(SM_FileHandle *fHandle, SM_PageHandle memPage)
 {
-		readBlock((fHandle->curPagePos),fHandle,memPage);
+		return readBlock((fHandle->curPagePos),fHandle,memPage);
 }
 
 
@@ -202,7 +204,7 @@ RC readNextBlock(SM_FileHandle *fHandle, SM_PageHandle memPage)
  ***************************************************************/
 RC readLastBlock(SM_FileHandle *fHandle, SM_PageHandle memPage)
 {
-		readBlock((fHandle->totalNumPages-1),fHandle,memPage);
+		return readBlock((fHandle->totalNumPages-1),fHandle,memPage);
 }
 
 /*********************************************************************
@@ -212,17 +214,14 @@ RC readLastBlock(SM_FileHandle *fHandle, SM_PageHandle memPage)
  *********************************************************************/
 RC writeBlock(int pageNum, SM_FileHandle *fHandle, SM_PageHandle memPage)
 {
-		if(pageNum > fHandle->totalNumPages)
+		if(pageNum > fHandle->totalNumPages-1)
 		{
 				return RC_READ_NON_EXISTING_PAGE;
 		}
 		else if(!fHandle->mgmtInfo)
 		{
-			FILE* fo = fopen(fHandle->fileName,"w+");
+			FILE* fo = fopen(fHandle->fileName,"r+");
 			fHandle->mgmtInfo = fo;
-		}
-		else
-		{
 		}
 		if(fseek(fHandle->mgmtInfo,(pageNum)*PAGE_SIZE,SEEK_SET)==0)
 		{
@@ -230,6 +229,10 @@ RC writeBlock(int pageNum, SM_FileHandle *fHandle, SM_PageHandle memPage)
 				fclose(fHandle->mgmtInfo);
 				fHandle->mgmtInfo = NULL;
 				return RC_OK;
+		}
+		else
+		{
+				return RC_WRITE_FAILED;
 		}
 }
 
@@ -240,7 +243,7 @@ RC writeBlock(int pageNum, SM_FileHandle *fHandle, SM_PageHandle memPage)
  ***************************************************************/
 RC writeCurrentBlock(SM_FileHandle *fHandle, SM_PageHandle memPage)
 {
-		writeBlock((fHandle->curPagePos),fHandle,memPage);
+		return writeBlock((fHandle->curPagePos-1),fHandle,memPage);
 }
 
 
@@ -256,7 +259,6 @@ RC appendEmptyBlock(SM_FileHandle *fHandle)
 				FILE* fo = fopen(fHandle->fileName,"a+");
 				fHandle->mgmtInfo = fo;
 		}
-		fHandle->totalNumPages += 1;   //After append empty block, the total number page increase;
 		char* content = (char *) malloc(PAGE_SIZE);  //create a buffer and store the content which is wrote to the new block;
 		for(int i=0; i<PAGE_SIZE;i++)
 		{
@@ -265,25 +267,38 @@ RC appendEmptyBlock(SM_FileHandle *fHandle)
 		if(fseek(fHandle->mgmtInfo,0,SEEK_END)==0)
 		{
 				fwrite(content,sizeof(char),PAGE_SIZE,fHandle->mgmtInfo);  //fill the empty block with "\0" bytes;
+				fHandle->totalNumPages += 1;   //After append empty block, the total number page increase;
+				fclose(fHandle->mgmtInfo);
+				fHandle->mgmtInfo = NULL;
+				free(content);
+				content = NULL;
+				return RC_OK;
 		}
-		fclose(fHandle->mgmtInfo);
-		fHandle->mgmtInfo = NULL;
-		free(content);
-		content = NULL;
-		return RC_OK;
+		else
+		{
+				return RC_WRITE_FAILED;
+		}
 }
 
 /***************************************************************
  *   << Interface---ensureCapacity >>                          *
  *  get the number of pages add to the page file and           *
- *  call the appendEmptyBlock function for the number times    *
+ *  call the appendEmptyBlock function for couple times    *
  *                                                             *
  ***************************************************************/
 RC ensureCapacity(int numberOfPages, SM_FileHandle *fHandle)
 {
-		int numPageAdd = numberOfPages - fHandle->totalNumPages;  //the nubmer of pages need to be add to the page file
-		for(int i=0; i<numPageAdd; i++)
+		if(numberOfPages < fHandle->totalNumPages)
 		{
-				appendEmptyBlock(fHandle);
+			return RC_OK;
+		}
+		else
+		{
+			int numPageAdd = numberOfPages - fHandle->totalNumPages;  //the nubmer of pages need to be add to the page file
+			for(int i=0; i<numPageAdd; i++)
+			{
+					appendEmptyBlock(fHandle);
+			}
+			return RC_OK;
 		}
 }
