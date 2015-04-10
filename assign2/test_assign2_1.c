@@ -24,59 +24,59 @@ char *testName;
 	free(real);							\
 	exit(1);							\
       }									\
-    printf("[%s-%s-L%i-%s] OK: expected <%s> and was <%s>: %s\n",TEST_INFO, _exp, real, message); \
-    free(real);								\
-  } while(0)
+		printf("[%s-%s-L%i-%s] OK: expected <%s> and was <%s>: %s\n",TEST_INFO, _exp, real, message); \
+		free(real);								\
+	  } while(0)
 
-// test and helper methods
-static void testCreatingAndReadingDummyPages (void);
-static void createDummyPages(BM_BufferPool *bm, int num);
-static void checkDummyPages(BM_BufferPool *bm, int num);
+	// test and helper methods
+	static void testCreatingAndReadingDummyPages (void);
+	static void createDummyPages(BM_BufferPool *bm, int num);
+	static void checkDummyPages(BM_BufferPool *bm, int num);
 
-static void testReadPage (void);
+	static void testReadPage (void);
 
-static void testFIFO (void);
-static void testLRU (void);
+	static void testFIFO (void);
+	static void testLRU (void);
 
-// main method
-int 
-main (void) 
-{
-  initStorageManager();
-  testName = "";
+	// main method
+	int 
+	main (void) 
+	{
+	  initStorageManager();
+	  testName = "";
 
-  testCreatingAndReadingDummyPages();
-  testReadPage();
-  testFIFO();
-  testLRU();
-}
+	  testCreatingAndReadingDummyPages();
+	  testReadPage();
+	  testFIFO();
+	  testLRU();
+	}
 
-// create n pages with content "Page X" and read them back to check whether the content is right
-void
-testCreatingAndReadingDummyPages (void)
-{
-  BM_BufferPool *bm = MAKE_POOL();
-  testName = "Creating and Reading Back Dummy Pages";
+	// create n pages with content "Page X" and read them back to check whether the content is right
+	void
+	testCreatingAndReadingDummyPages (void)
+	{
+	  BM_BufferPool *bm = MAKE_POOL();
+	  testName = "Creating and Reading Back Dummy Pages";
 
-  CHECK(createPageFile("testbuffer.bin"));
+	  CHECK(createPageFile("testbuffer.bin"));
 
-  createDummyPages(bm, 22);
-  checkDummyPages(bm, 20);
+	  createDummyPages(bm, 22);
+	  checkDummyPages(bm, 20);
 
-  createDummyPages(bm, 10000);
-  checkDummyPages(bm, 10000);
+	  createDummyPages(bm, 10000);
+	  checkDummyPages(bm, 10000);
 
-  CHECK(destroyPageFile("testbuffer.bin"));
+	  CHECK(destroyPageFile("testbuffer.bin"));
 
-  free(bm);
-  TEST_DONE();
-}
+	  free(bm);
+	  TEST_DONE();
+	}
 
 
-void 
-createDummyPages(BM_BufferPool *bm, int num)
-{
-  int i;
+	void 
+	createDummyPages(BM_BufferPool *bm, int num)
+	{
+	  int i;
   BM_PageHandle *h = MAKE_PAGE_HANDLE();
 
   CHECK(initBufferPool(bm, "testbuffer.bin", 3, RS_FIFO, NULL));
@@ -102,11 +102,9 @@ checkDummyPages(BM_BufferPool *bm, int num)
   char *expected = malloc(sizeof(char) * 512);
 
   CHECK(initBufferPool(bm, "testbuffer.bin", 3, RS_FIFO, NULL));
-
   for (i = 0; i < num; i++)
     {
       CHECK(pinPage(bm, h, i));
-
       sprintf(expected, "%s-%i", "Page", h->pageNum);
       ASSERT_EQUALS_STRING(expected, h->data, "reading back dummy page content");
 

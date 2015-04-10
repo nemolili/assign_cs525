@@ -1,0 +1,2730 @@
+cscope 15 $HOME/development/Assignment/assign2               0000015112
+	@buffer_mgr.h
+
+1 #iâdeà
+BUFFER_MANAGER_H
+
+
+2 
+	#BUFFER_MANAGER_H
+
+
+	)
+
+5 
+	~"db”rÜ.h
+"
+
+8 
+	~"dt.h
+"
+
+11 
+	eR•Ïûm’tSŒ©egy
+ {
+
+12 
+	mRS_FIFO
+ = 0,
+
+13 
+	mRS_LRU
+ = 1,
+
+14 
+	mRS_CLOCK
+ = 2,
+
+15 
+	mRS_LFU
+ = 3,
+
+16 
+	mRS_LRU_K
+ = 4
+
+17 } 
+	tR•Ïûm’tSŒ©egy
+;
+
+20 
+	tPageNumb”
+;
+
+21 
+	#NO_PAGE
+ -1
+
+	)
+
+23 
+	sBM_BufãrPoŞ
+ {
+
+24 *
+	m·geFe
+;
+
+25 
+	mnumPages
+;
+
+26 
+R•Ïûm’tSŒ©egy
+ 
+	m¡¿‹gy
+;
+
+27 *
+	mmgmtD©a
+;
+
+29 } 
+	tBM_BufãrPoŞ
+;
+
+31 
+	sBM_PageHªdË
+ {
+
+32 
+PageNumb”
+ 
+	m·geNum
+;
+
+33 *
+	md©a
+;
+
+34 } 
+	tBM_PageHªdË
+;
+
+37 
+	#MAKE_POOL
+() \
+
+38 ((
+BM_BufãrPoŞ
+ *è
+	`m®loc
+ ((BM_BufãrPoŞ)))
+
+	)
+
+40 
+	#MAKE_PAGE_HANDLE
+() \
+
+41 ((
+BM_PageHªdË
+ *è
+	`m®loc
+ ((BM_PageHªdË)))
+
+	)
+
+44 
+RC
+ 
+š™BufãrPoŞ
+(
+BM_BufãrPoŞ
+ *cÚ¡ 
+bm
+, cÚ¡ *cÚ¡ 
+·geFeName
+,
+
+45 cÚ¡ 
+numPages
+, 
+R•Ïûm’tSŒ©egy
+ 
+¡¿‹gy
+,
+
+46 *
+¡¿tD©a
+);
+
+47 
+RC
+ 
+shutdownBufãrPoŞ
+(
+BM_BufãrPoŞ
+ *cÚ¡ 
+bm
+);
+
+48 
+RC
+ 
+fÜûFlushPoŞ
+(
+BM_BufãrPoŞ
+ *cÚ¡ 
+bm
+);
+
+51 
+RC
+ 
+m¬kDœty
+ (
+BM_BufãrPoŞ
+ *cÚ¡ 
+bm
+, 
+BM_PageHªdË
+ *cÚ¡ 
+·ge
+);
+
+52 
+RC
+ 
+uÅšPage
+ (
+BM_BufãrPoŞ
+ *cÚ¡ 
+bm
+, 
+BM_PageHªdË
+ *cÚ¡ 
+·ge
+);
+
+53 
+RC
+ 
+fÜûPage
+ (
+BM_BufãrPoŞ
+ *cÚ¡ 
+bm
+, 
+BM_PageHªdË
+ *cÚ¡ 
+·ge
+);
+
+54 
+RC
+ 
+pšPage
+ (
+BM_BufãrPoŞ
+ *cÚ¡ 
+bm
+, 
+BM_PageHªdË
+ *cÚ¡ 
+·ge
+,
+
+55 cÚ¡ 
+PageNumb”
+ 
+·geNum
+);
+
+58 
+PageNumb”
+ *
+g‘F¿meCÚ‹Ás
+ (
+BM_BufãrPoŞ
+ *cÚ¡ 
+bm
+);
+
+59 
+boŞ
+ *
+g‘DœtyFÏgs
+ (
+BM_BufãrPoŞ
+ *cÚ¡ 
+bm
+);
+
+60 *
+g‘FixCouÁs
+ (
+BM_BufãrPoŞ
+ *cÚ¡ 
+bm
+);
+
+61 
+g‘NumR—dIO
+ (
+BM_BufãrPoŞ
+ *cÚ¡ 
+bm
+);
+
+62 
+g‘NumWr™eIO
+ (
+BM_BufãrPoŞ
+ *cÚ¡ 
+bm
+);
+
+	@buffer_mgr_stat.c
+
+1 
+	~"bufãr_mgr_¡©.h
+"
+
+2 
+	~"bufãr_mgr.h
+"
+
+4 
+	~<¡dio.h
+>
+
+5 
+	~<¡dlib.h
+>
+
+8 
+´štSŒ©
+ (
+BM_BufãrPoŞ
+ *cÚ¡ 
+bm
+);
+
+12 
+	$´štPoŞCÚ‹Á
+ (
+BM_BufãrPoŞ
+ *cÚ¡ 
+bm
+)
+
+14 
+PageNumb”
+ *
+äameCÚ‹Á
+;
+
+15 
+boŞ
+ *
+dœty
+;
+
+16 *
+fixCouÁ
+;
+
+17 
+i
+;
+
+19 
+äameCÚ‹Á
+ = 
+	`g‘F¿meCÚ‹Ás
+(
+bm
+);
+
+20 
+dœty
+ = 
+	`g‘DœtyFÏgs
+(
+bm
+);
+
+21 
+fixCouÁ
+ = 
+	`g‘FixCouÁs
+(
+bm
+);
+
+23 
+	`´štf
+("{");
+
+24 
+	`´štSŒ©
+(
+bm
+);
+
+25 
+	`´štf
+(" %i}: ", 
+bm
+->
+numPages
+);
+
+27 
+i
+ = 0; i < 
+bm
+->
+numPages
+; i++)
+
+28 
+	`´štf
+("%s[%i%s%i]", ((
+i
+ =ğ0è? "" : ","è, 
+äameCÚ‹Á
+[i], (
+dœty
+[i] ? "x": " "), 
+fixCouÁ
+[i]);
+
+29 
+	`´štf
+("\n");
+
+30 
+	}
+}
+
+33 
+	$¥rštPoŞCÚ‹Á
+ (
+BM_BufãrPoŞ
+ *cÚ¡ 
+bm
+)
+
+35 
+PageNumb”
+ *
+äameCÚ‹Á
+;
+
+36 
+boŞ
+ *
+dœty
+;
+
+37 *
+fixCouÁ
+;
+
+38 
+i
+;
+
+39 *
+mes§ge
+;
+
+40 
+pos
+ = 0;
+
+42 
+mes§ge
+ = (*è
+	`m®loc
+(256 + (22 * 
+bm
+->
+numPages
+));
+
+43 
+äameCÚ‹Á
+ = 
+	`g‘F¿meCÚ‹Ás
+(
+bm
+);
+
+44 
+dœty
+ = 
+	`g‘DœtyFÏgs
+(
+bm
+);
+
+45 
+fixCouÁ
+ = 
+	`g‘FixCouÁs
+(
+bm
+);
+
+47 
+i
+ = 0; i < 
+bm
+->
+numPages
+; i++)
+
+48 
+pos
+ +ğ
+	`¥rštf
+(
+mes§ge
+ +…os, "%s[%i%s%i]", ((
+i
+ =ğ0è? "" : ","è, 
+äameCÚ‹Á
+[i], (
+dœty
+[i] ? "x": " "), 
+fixCouÁ
+[i]);
+
+50  
+mes§ge
+;
+
+51 
+	}
+}
+
+55 
+	$´štPageCÚ‹Á
+ (
+BM_PageHªdË
+ *cÚ¡ 
+·ge
+)
+
+57 
+i
+;
+
+59 
+	`´štf
+("[Pag%i]\n", 
+·ge
+->
+·geNum
+);
+
+61 
+i
+ = 1; i <ğ
+PAGE_SIZE
+; i++)
+
+62 
+	`´štf
+("%02X%s%s", 
+·ge
+->
+d©a
+[
+i
+], (i % 8) ? "" : " ", (i % 64) ? "" : "\n");
+
+63 
+	}
+}
+
+66 
+	$¥rštPageCÚ‹Á
+ (
+BM_PageHªdË
+ *cÚ¡ 
+·ge
+)
+
+68 
+i
+;
+
+69 *
+mes§ge
+;
+
+70 
+pos
+ = 0;
+
+72 
+mes§ge
+ = (*è
+	`m®loc
+(30 + (2 * 
+PAGE_SIZE
+) + (PAGE_SIZE % 64) + (PAGE_SIZE % 8));
+
+73 
+pos
+ +ğ
+	`¥rštf
+(
+mes§ge
+ +…os, "[Pag%i]\n", 
+·ge
+->
+·geNum
+);
+
+75 
+i
+ = 1; i <ğ
+PAGE_SIZE
+; i++)
+
+76 
+pos
+ +ğ
+	`¥rštf
+(
+mes§ge
+ +…os, "%02X%s%s", 
+·ge
+->
+d©a
+[
+i
+], (i % 8) ? "" : " ", (i % 64) ? "" : "\n");
+
+78  
+mes§ge
+;
+
+79 
+	}
+}
+
+82 
+	$´štSŒ©
+ (
+BM_BufãrPoŞ
+ *cÚ¡ 
+bm
+)
+
+84 
+bm
+->
+¡¿‹gy
+)
+
+86 
+RS_FIFO
+:
+
+87 
+	`´štf
+("FIFO");
+
+89 
+RS_LRU
+:
+
+90 
+	`´štf
+("LRU");
+
+92 
+RS_CLOCK
+:
+
+93 
+	`´štf
+("CLOCK");
+
+95 
+RS_LFU
+:
+
+96 
+	`´štf
+("LFU");
+
+98 
+RS_LRU_K
+:
+
+99 
+	`´štf
+("LRU-K");
+
+102 
+	`´štf
+("%i", 
+bm
+->
+¡¿‹gy
+);
+
+105 
+	}
+}
+
+	@buffer_mgr_stat.h
+
+1 #iâdeà
+BUFFER_MGR_STAT_H
+
+
+2 
+	#BUFFER_MGR_STAT_H
+
+
+	)
+
+4 
+	~"bufãr_mgr.h
+"
+
+7 
+´štPoŞCÚ‹Á
+ (
+BM_BufãrPoŞ
+ *cÚ¡ 
+bm
+);
+
+8 
+´štPageCÚ‹Á
+ (
+BM_PageHªdË
+ *cÚ¡ 
+·ge
+);
+
+9 *
+¥rštPoŞCÚ‹Á
+ (
+BM_BufãrPoŞ
+ *cÚ¡ 
+bm
+);
+
+10 *
+¥rštPageCÚ‹Á
+ (
+BM_PageHªdË
+ *cÚ¡ 
+·ge
+);
+
+	@dberror.c
+
+1 
+	~"db”rÜ.h
+"
+
+3 
+	~<¡ršg.h
+>
+
+4 
+	~<¡dlib.h
+>
+
+5 
+	~<¡dio.h
+>
+
+7 *
+	gRC_mes§ge
+;
+
+11 
+	$´štE¼Ü
+ (
+RC
+ 
+”rÜ
+)
+
+13 ià(
+RC_mes§ge
+ !ğ
+NULL
+)
+
+14 
+	`´štf
+("EC (%i), \"%s\"\n", 
+”rÜ
+, 
+RC_mes§ge
+);
+
+16 
+	`´štf
+("EC (%i)\n", 
+”rÜ
+);
+
+17 
+	}
+}
+
+20 
+	$”rÜMes§ge
+ (
+RC
+ 
+”rÜ
+)
+
+22 *
+mes§ge
+;
+
+24 ià(
+RC_mes§ge
+ !ğ
+NULL
+)
+
+26 
+mes§ge
+ = (*è
+	`m®loc
+(
+	`¡¾’
+(
+RC_mes§ge
+) + 30);
+
+27 
+	`¥rštf
+(
+mes§ge
+, "EC (%i), \"%s\"\n", 
+”rÜ
+, 
+RC_mes§ge
+);
+
+31 
+mes§ge
+ = (*è
+	`m®loc
+(30);
+
+32 
+	`¥rštf
+(
+mes§ge
+, "EC (%i)\n", 
+”rÜ
+);
+
+35  
+mes§ge
+;
+
+36 
+	}
+}
+
+	@dberror.h
+
+1 #iâdeà
+DBERROR_H
+
+
+2 
+	#DBERROR_H
+
+
+	)
+
+4 
+	~"¡dio.h
+"
+
+7 
+	#PAGE_SIZE
+ 4096
+
+	)
+
+10 
+	tRC
+;
+
+12 
+	#RC_OK
+ 0
+
+	)
+
+13 
+	#RC_FILE_NOT_FOUND
+ 1
+
+	)
+
+14 
+	#RC_FILE_HANDLE_NOT_INIT
+ 2
+
+	)
+
+15 
+	#RC_WRITE_FAILED
+ 3
+
+	)
+
+16 
+	#RC_READ_NON_EXISTING_PAGE
+ 4
+
+	)
+
+18 
+	#RC_RM_COMPARE_VALUE_OF_DIFFERENT_DATATYPE
+ 200
+
+	)
+
+19 
+	#RC_RM_EXPR_RESULT_IS_NOT_BOOLEAN
+ 201
+
+	)
+
+20 
+	#RC_RM_BOOLEAN_EXPR_ARG_IS_NOT_BOOLEAN
+ 202
+
+	)
+
+21 
+	#RC_RM_NO_MORE_TUPLES
+ 203
+
+	)
+
+22 
+	#RC_RM_NO_PRINT_FOR_DATATYPE
+ 204
+
+	)
+
+23 
+	#RC_RM_UNKOWN_DATATYPE
+ 205
+
+	)
+
+25 
+	#RC_IM_KEY_NOT_FOUND
+ 300
+
+	)
+
+26 
+	#RC_IM_KEY_ALREADY_EXISTS
+ 301
+
+	)
+
+27 
+	#RC_IM_N_TO_LAGE
+ 302
+
+	)
+
+28 
+	#RC_IM_NO_MORE_ENTRIES
+ 303
+
+	)
+
+31 *
+RC_mes§ge
+;
+
+34 
+´štE¼Ü
+ (
+RC
+ 
+”rÜ
+);
+
+35 *
+”rÜMes§ge
+ (
+RC
+ 
+”rÜ
+);
+
+37 
+	#THROW
+(
+rc
+,
+mes§ge
+) \
+
+39 
+RC_mes§ge
+=
+mes§ge
+; \
+
+40  
+rc
+; \
+
+42 
+
+	)
+
+44 
+	#CHECK
+(
+code
+) \
+
+46 
+rc_š‹º®
+ = (
+code
+); \
+
+47 ià(
+rc_š‹º®
+ !ğ
+RC_OK
+) \
+
+49 *
+mes§ge
+ = 
+	`”rÜMes§ge
+(
+rc_š‹º®
+); \
+
+50 
+	`´štf
+("[%s-L%i-%s] ERROR: O³¿tiÚ„‘uºedƒ¼Ü: %s\n",
+__FILE__
+, 
+__LINE__
+, 
+__TIME__
+, 
+mes§ge
+); \
+
+51 
+	`ä“
+(
+mes§ge
+); \
+
+52 
+	`ex™
+(1); \
+
+54 } 0);
+
+	)
+
+	@dt.h
+
+1 #iâdeà
+DT_H
+
+
+2 
+	#DT_H
+
+
+	)
+
+5 #iâdeà
+boŞ
+
+
+6 
+	tboŞ
+;
+
+7 
+	#Œue
+ 1
+
+	)
+
+8 
+	#çl£
+ 0
+
+	)
+
+11 
+	#TRUE
+ 
+Œue
+
+
+	)
+
+12 
+	#FALSE
+ 
+çl£
+
+
+	)
+
+	@storage_mgr.h
+
+1 #iâdeà
+STORAGE_MGR_H
+
+
+2 
+	#STORAGE_MGR_H
+
+
+	)
+
+4 
+	~"db”rÜ.h
+"
+
+9 
+	sSM_FeHªdË
+ {
+
+10 *
+	mfeName
+;
+
+11 
+	mtÙ®NumPages
+;
+
+12 
+	mcurPagePos
+;
+
+13 *
+	mmgmtInfo
+;
+
+14 } 
+	tSM_FeHªdË
+;
+
+16 * 
+	tSM_PageHªdË
+;
+
+22 
+š™StÜageMªag”
+ ();
+
+23 
+RC
+ 
+ü—‹PageFe
+ (*
+feName
+);
+
+24 
+RC
+ 
+İ’PageFe
+ (*
+feName
+, 
+SM_FeHªdË
+ *
+fHªdË
+);
+
+25 
+RC
+ 
+şo£PageFe
+ (
+SM_FeHªdË
+ *
+fHªdË
+);
+
+26 
+RC
+ 
+de¡royPageFe
+ (*
+feName
+);
+
+29 
+RC
+ 
+»adBlock
+ (
+·geNum
+, 
+SM_FeHªdË
+ *
+fHªdË
+, 
+SM_PageHªdË
+ 
+memPage
+);
+
+30 
+g‘BlockPos
+ (
+SM_FeHªdË
+ *
+fHªdË
+);
+
+31 
+RC
+ 
+»adFœ¡Block
+ (
+SM_FeHªdË
+ *
+fHªdË
+, 
+SM_PageHªdË
+ 
+memPage
+);
+
+32 
+RC
+ 
+»adP»viousBlock
+ (
+SM_FeHªdË
+ *
+fHªdË
+, 
+SM_PageHªdË
+ 
+memPage
+);
+
+33 
+RC
+ 
+»adCu¼’tBlock
+ (
+SM_FeHªdË
+ *
+fHªdË
+, 
+SM_PageHªdË
+ 
+memPage
+);
+
+34 
+RC
+ 
+»adNextBlock
+ (
+SM_FeHªdË
+ *
+fHªdË
+, 
+SM_PageHªdË
+ 
+memPage
+);
+
+35 
+RC
+ 
+»adLa¡Block
+ (
+SM_FeHªdË
+ *
+fHªdË
+, 
+SM_PageHªdË
+ 
+memPage
+);
+
+38 
+RC
+ 
+wr™eBlock
+ (
+·geNum
+, 
+SM_FeHªdË
+ *
+fHªdË
+, 
+SM_PageHªdË
+ 
+memPage
+);
+
+39 
+RC
+ 
+wr™eCu¼’tBlock
+ (
+SM_FeHªdË
+ *
+fHªdË
+, 
+SM_PageHªdË
+ 
+memPage
+);
+
+40 
+RC
+ 
+­³ndEm±yBlock
+ (
+SM_FeHªdË
+ *
+fHªdË
+);
+
+41 
+RC
+ 
+’su»C­ac™y
+ (
+numb”OfPages
+, 
+SM_FeHªdË
+ *
+fHªdË
+);
+
+	@test_assign2_1.c
+
+1 
+	~"¡Üage_mgr.h
+"
+
+2 
+	~"bufãr_mgr_¡©.h
+"
+
+3 
+	~"bufãr_mgr.h
+"
+
+4 
+	~"db”rÜ.h
+"
+
+5 
+	~"‹¡_h–³r.h
+"
+
+7 
+	~<¡dio.h
+>
+
+8 
+	~<¡dlib.h
+>
+
+9 
+	~<¡ršg.h
+>
+
+12 *
+	g‹¡Name
+;
+
+16 
+	#ASSERT_EQUALS_POOL
+(
+ex³ùed
+,
+bm
+,
+mes§ge
+) \
+
+18 *
+»®
+; \
+
+19 *
+_exp
+ = (*è(
+ex³ùed
+); \
+
+20 
+»®
+ = 
+	`¥rštPoŞCÚ‹Á
+(
+bm
+); \
+
+21 ià(
+	`¡rcmp
+((
+_exp
+),
+»®
+) != 0) \
+
+23 
+	`´štf
+("[%s-%s-L%i-%s] FAILED:ƒx³ùed <%s> buˆwa <%s>: %s\n",
+TEST_INFO
+, 
+_exp
+, 
+»®
+, 
+mes§ge
+); \
+
+24 
+	`ä“
+(
+»®
+); \
+
+25 
+	`ex™
+(1); \
+
+27 
+	`´štf
+("[%s-%s-L%i-%s] OK:ƒx³ùed <%s>‡nd wa <%s>: %s\n",
+TEST_INFO
+, 
+_exp
+, 
+»®
+, 
+mes§ge
+); \
+
+28 
+	`ä“
+(
+»®
+); \
+
+29 } 0)
+
+	)
+
+32 
+‹¡C»©šgAndR—dšgDummyPages
+ ();
+
+33 
+ü—‹DummyPages
+(
+BM_BufãrPoŞ
+ *
+bm
+, 
+num
+);
+
+34 
+checkDummyPages
+(
+BM_BufãrPoŞ
+ *
+bm
+, 
+num
+);
+
+36 
+‹¡R—dPage
+ ();
+
+38 
+‹¡FIFO
+ ();
+
+39 
+‹¡LRU
+ ();
+
+43 
+	$maš
+ ()
+
+45 
+	`š™StÜageMªag”
+();
+
+46 
+‹¡Name
+ = "";
+
+48 
+	`‹¡C»©šgAndR—dšgDummyPages
+();
+
+49 
+	`‹¡R—dPage
+();
+
+50 
+	`‹¡FIFO
+();
+
+51 
+	`‹¡LRU
+();
+
+52 
+	}
+}
+
+56 
+	$‹¡C»©šgAndR—dšgDummyPages
+ ()
+
+58 
+BM_BufãrPoŞ
+ *
+bm
+ = 
+	`MAKE_POOL
+();
+
+59 
+‹¡Name
+ = "Creating‡nd Reading Back Dummy Pages";
+
+61 
+	`CHECK
+(
+	`ü—‹PageFe
+("testbuffer.bin"));
+
+63 
+	`ü—‹DummyPages
+(
+bm
+, 22);
+
+64 
+	`checkDummyPages
+(
+bm
+, 20);
+
+66 
+	`ü—‹DummyPages
+(
+bm
+, 10000);
+
+67 
+	`checkDummyPages
+(
+bm
+, 10000);
+
+69 
+	`CHECK
+(
+	`de¡royPageFe
+("testbuffer.bin"));
+
+71 
+	`ä“
+(
+bm
+);
+
+72 
+	`TEST_DONE
+();
+
+73 
+	}
+}
+
+77 
+	$ü—‹DummyPages
+(
+BM_BufãrPoŞ
+ *
+bm
+, 
+num
+)
+
+79 
+i
+;
+
+80 
+BM_PageHªdË
+ *
+h
+ = 
+	`MAKE_PAGE_HANDLE
+();
+
+82 
+	`CHECK
+(
+	`š™BufãrPoŞ
+(
+bm
+, "‹¡bufãr.bš", 3, 
+RS_FIFO
+, 
+NULL
+));
+
+84 
+i
+ = 0; i < 
+num
+; i++)
+
+86 
+	`CHECK
+(
+	`pšPage
+(
+bm
+, 
+h
+, 
+i
+));
+
+87 
+	`¥rštf
+(
+h
+->
+d©a
+, "%s-%i", "Page", h->
+·geNum
+);
+
+88 
+	`CHECK
+(
+	`m¬kDœty
+(
+bm
+, 
+h
+));
+
+89 
+	`CHECK
+(
+	`uÅšPage
+(
+bm
+,
+h
+));
+
+92 
+	`CHECK
+(
+	`shutdownBufãrPoŞ
+(
+bm
+));
+
+94 
+	`ä“
+(
+h
+);
+
+95 
+	}
+}
+
+98 
+	$checkDummyPages
+(
+BM_BufãrPoŞ
+ *
+bm
+, 
+num
+)
+
+100 
+i
+;
+
+101 
+BM_PageHªdË
+ *
+h
+ = 
+	`MAKE_PAGE_HANDLE
+();
+
+102 *
+ex³ùed
+ = 
+	`m®loc
+(() * 512);
+
+104 
+	`CHECK
+(
+	`š™BufãrPoŞ
+(
+bm
+, "‹¡bufãr.bš", 3, 
+RS_FIFO
+, 
+NULL
+));
+
+106 
+i
+ = 0; i < 
+num
+; i++)
+
+108 
+	`CHECK
+(
+	`pšPage
+(
+bm
+, 
+h
+, 
+i
+));
+
+110 
+	`¥rštf
+(
+ex³ùed
+, "%s-%i", "Page", 
+h
+->
+·geNum
+);
+
+111 
+	`ASSERT_EQUALS_STRING
+(
+ex³ùed
+, 
+h
+->
+d©a
+, "reading back dummy…age content");
+
+113 
+	`CHECK
+(
+	`uÅšPage
+(
+bm
+,
+h
+));
+
+116 
+	`CHECK
+(
+	`shutdownBufãrPoŞ
+(
+bm
+));
+
+118 
+	`ä“
+(
+ex³ùed
+);
+
+119 
+	`ä“
+(
+h
+);
+
+120 
+	}
+}
+
+123 
+	$‹¡R—dPage
+ ()
+
+125 
+BM_BufãrPoŞ
+ *
+bm
+ = 
+	`MAKE_POOL
+();
+
+126 
+BM_PageHªdË
+ *
+h
+ = 
+	`MAKE_PAGE_HANDLE
+();
+
+127 
+‹¡Name
+ = "Reading‡…age";
+
+129 
+	`CHECK
+(
+	`ü—‹PageFe
+("testbuffer.bin"));
+
+130 
+	`CHECK
+(
+	`š™BufãrPoŞ
+(
+bm
+, "‹¡bufãr.bš", 3, 
+RS_FIFO
+, 
+NULL
+));
+
+132 
+	`CHECK
+(
+	`pšPage
+(
+bm
+, 
+h
+, 0));
+
+133 
+	`CHECK
+(
+	`pšPage
+(
+bm
+, 
+h
+, 0));
+
+135 
+	`CHECK
+(
+	`m¬kDœty
+(
+bm
+, 
+h
+));
+
+137 
+	`CHECK
+(
+	`uÅšPage
+(
+bm
+,
+h
+));
+
+138 
+	`CHECK
+(
+	`uÅšPage
+(
+bm
+,
+h
+));
+
+140 
+	`CHECK
+(
+	`fÜûPage
+(
+bm
+, 
+h
+));
+
+142 
+	`CHECK
+(
+	`shutdownBufãrPoŞ
+(
+bm
+));
+
+143 
+	`CHECK
+(
+	`de¡royPageFe
+("testbuffer.bin"));
+
+145 
+	`ä“
+(
+bm
+);
+
+146 
+	`ä“
+(
+h
+);
+
+148 
+	`TEST_DONE
+();
+
+149 
+	}
+}
+
+152 
+	$‹¡FIFO
+ ()
+
+155 cÚ¡ *
+poŞCÚ‹Ás
+[] = {
+
+168 cÚ¡ 
+»que¡s
+[] = {0,1,2,3,4,4,5,6,0};
+
+169 cÚ¡ 
+numLšReque¡s
+ = 5;
+
+170 cÚ¡ 
+numChªgeReque¡s
+ = 3;
+
+172 
+i
+;
+
+173 
+BM_BufãrPoŞ
+ *
+bm
+ = 
+	`MAKE_POOL
+();
+
+174 
+BM_PageHªdË
+ *
+h
+ = 
+	`MAKE_PAGE_HANDLE
+();
+
+175 
+‹¡Name
+ = "Testing FIFO…age„eplacement";
+
+177 
+	`CHECK
+(
+	`ü—‹PageFe
+("testbuffer.bin"));
+
+179 
+	`ü—‹DummyPages
+(
+bm
+, 100);
+
+181 
+	`CHECK
+(
+	`š™BufãrPoŞ
+(
+bm
+, "‹¡bufãr.bš", 3, 
+RS_FIFO
+, 
+NULL
+));
+
+184 
+i
+ = 0; i < 
+numLšReque¡s
+; i++)
+
+186 
+	`pšPage
+(
+bm
+, 
+h
+, 
+»que¡s
+[
+i
+]);
+
+187 
+	`uÅšPage
+(
+bm
+, 
+h
+);
+
+188 
+	`ASSERT_EQUALS_POOL
+(
+poŞCÚ‹Ás
+[
+i
+], 
+bm
+, "check…ool content");
+
+192 
+i
+ = 
+numLšReque¡s
+;
+
+193 
+	`pšPage
+(
+bm
+, 
+h
+, 
+»que¡s
+[
+i
+]);
+
+194 
+	`ASSERT_EQUALS_POOL
+(
+poŞCÚ‹Ás
+[
+i
+],
+bm
+,"pool content‡fter…in…age");
+
+197 
+i
+ = 
+numLšReque¡s
+ + 1; i <‚umLšReque¡ + 
+numChªgeReque¡s
+ + 1; i++)
+
+199 
+	`pšPage
+(
+bm
+, 
+h
+, 
+»que¡s
+[
+i
+]);
+
+200 
+	`m¬kDœty
+(
+bm
+, 
+h
+);
+
+201 
+	`uÅšPage
+(
+bm
+, 
+h
+);
+
+202 
+	`ASSERT_EQUALS_POOL
+(
+poŞCÚ‹Ás
+[
+i
+], 
+bm
+, "check…ool content");
+
+206 
+i
+ = 
+numLšReque¡s
+ + 
+numChªgeReque¡s
+ + 1;
+
+207 
+h
+->
+·geNum
+ = 4;
+
+208 
+	`uÅšPage
+(
+bm
+, 
+h
+);
+
+209 
+	`ASSERT_EQUALS_POOL
+(
+poŞCÚ‹Ás
+[
+i
+],
+bm
+,"unpin†ast…age");
+
+211 
+i
+++;
+
+212 
+	`fÜûFlushPoŞ
+(
+bm
+);
+
+213 
+	`ASSERT_EQUALS_POOL
+(
+poŞCÚ‹Ás
+[
+i
+],
+bm
+,"pool content‡fter flush");
+
+216 
+	`ASSERT_EQUALS_INT
+(3, 
+	`g‘NumWr™eIO
+(
+bm
+), "check‚umber of write I/Os");
+
+217 
+	`ASSERT_EQUALS_INT
+(8, 
+	`g‘NumR—dIO
+(
+bm
+), "check‚umber of„ead I/Os");
+
+219 
+	`CHECK
+(
+	`shutdownBufãrPoŞ
+(
+bm
+));
+
+220 
+	`CHECK
+(
+	`de¡royPageFe
+("testbuffer.bin"));
+
+222 
+	`ä“
+(
+bm
+);
+
+223 
+	`ä“
+(
+h
+);
+
+224 
+	`TEST_DONE
+();
+
+225 
+	}
+}
+
+229 
+	$‹¡LRU
+ ()
+
+232 cÚ¡ *
+poŞCÚ‹Ás
+[] = {
+
+252 cÚ¡ 
+Üd”Reque¡s
+[] = {3,4,0,2,1};
+
+253 cÚ¡ 
+numLRUOrd”Chªge
+ = 5;
+
+255 
+i
+;
+
+256 
+¢­shÙ
+ = 0;
+
+257 
+BM_BufãrPoŞ
+ *
+bm
+ = 
+	`MAKE_POOL
+();
+
+258 
+BM_PageHªdË
+ *
+h
+ = 
+	`MAKE_PAGE_HANDLE
+();
+
+259 
+‹¡Name
+ = "Testing LRU…age„eplacement";
+
+261 
+	`CHECK
+(
+	`ü—‹PageFe
+("testbuffer.bin"));
+
+262 
+	`ü—‹DummyPages
+(
+bm
+, 100);
+
+263 
+	`CHECK
+(
+	`š™BufãrPoŞ
+(
+bm
+, "‹¡bufãr.bš", 5, 
+RS_LRU
+, 
+NULL
+));
+
+266 
+i
+ = 0; i < 5; i++)
+
+268 
+	`pšPage
+(
+bm
+, 
+h
+, 
+i
+);
+
+269 
+	`uÅšPage
+(
+bm
+, 
+h
+);
+
+270 
+	`ASSERT_EQUALS_POOL
+(
+poŞCÚ‹Ás
+[
+¢­shÙ
+++], 
+bm
+, "check…ool content„eading in…ages");
+
+274 
+i
+ = 0; i < 
+numLRUOrd”Chªge
+; i++)
+
+276 
+	`pšPage
+(
+bm
+, 
+h
+, 
+Üd”Reque¡s
+[
+i
+]);
+
+277 
+	`uÅšPage
+(
+bm
+, 
+h
+);
+
+278 
+	`ASSERT_EQUALS_POOL
+(
+poŞCÚ‹Ás
+[
+¢­shÙ
+++], 
+bm
+, "check…ool content using…ages");
+
+282 
+i
+ = 0; i < 5; i++)
+
+284 
+	`pšPage
+(
+bm
+, 
+h
+, 5 + 
+i
+);
+
+285 
+	`uÅšPage
+(
+bm
+, 
+h
+);
+
+286 
+	`ASSERT_EQUALS_POOL
+(
+poŞCÚ‹Ás
+[
+¢­shÙ
+++], 
+bm
+, "check…ool content using…ages");
+
+290 
+	`ASSERT_EQUALS_INT
+(0, 
+	`g‘NumWr™eIO
+(
+bm
+), "check‚umber of write I/Os");
+
+291 
+	`ASSERT_EQUALS_INT
+(10, 
+	`g‘NumR—dIO
+(
+bm
+), "check‚umber of„ead I/Os");
+
+293 
+	`CHECK
+(
+	`shutdownBufãrPoŞ
+(
+bm
+));
+
+294 
+	`CHECK
+(
+	`de¡royPageFe
+("testbuffer.bin"));
+
+296 
+	`ä“
+(
+bm
+);
+
+297 
+	`ä“
+(
+h
+);
+
+298 
+	`TEST_DONE
+();
+
+299 
+	}
+}
+
+	@test_helper.h
+
+1 #iâdeà
+TEST_HELPER_H
+
+
+2 
+	#TEST_HELPER_H
+
+
+	)
+
+4 
+	~<¡dio.h
+>
+
+5 
+	~<¡dlib.h
+>
+
+6 
+	~<¡ršg.h
+>
+
+7 
+	~<time.h
+>
+
+10 *
+‹¡Name
+;
+
+13 
+	#TEST_INFO
+ 
+__FILE__
+, 
+‹¡Name
+, 
+__LINE__
+, 
+__TIME__
+
+
+	)
+
+16 
+	#TEST_CHECK
+(
+code
+) \
+
+18 
+rc_š‹º®
+ = (
+code
+); \
+
+19 ià(
+rc_š‹º®
+ !ğ
+RC_OK
+) \
+
+21 *
+mes§ge
+ = 
+	`”rÜMes§ge
+(
+rc_š‹º®
+); \
+
+22 
+	`´štf
+("[%s-%s-L%i-%s] FAILED: O³¿tiÚ„‘uºedƒ¼Ü: %s\n",
+TEST_INFO
+, 
+mes§ge
+); \
+
+23 
+	`ä“
+(
+mes§ge
+); \
+
+24 
+	`ex™
+(1); \
+
+26 } 0);
+
+	)
+
+29 
+	#ASSERT_EQUALS_STRING
+(
+ex³ùed
+,
+»®
+,
+mes§ge
+) \
+
+31 ià(
+	`¡rcmp
+((
+ex³ùed
+),(
+»®
+)) != 0) \
+
+33 
+	`´štf
+("[%s-%s-L%i-%s] FAILED:ƒx³ùed <%s> buˆwa <%s>: %s\n",
+TEST_INFO
+, 
+ex³ùed
+, 
+»®
+, 
+mes§ge
+); \
+
+34 
+	`ex™
+(1); \
+
+36 
+	`´štf
+("[%s-%s-L%i-%s] OK:ƒx³ùed <%s>‡nd wa <%s>: %s\n",
+TEST_INFO
+, 
+ex³ùed
+, 
+»®
+, 
+mes§ge
+); \
+
+37 } 0)
+
+	)
+
+40 
+	#ASSERT_EQUALS_INT
+(
+ex³ùed
+,
+»®
+,
+mes§ge
+) \
+
+42 ià((
+ex³ùed
+è!ğ(
+»®
+)) \
+
+44 
+	`´štf
+("[%s-%s-L%i-%s] FAILED:ƒx³ùed <%i> buˆwa <%i>: %s\n",
+TEST_INFO
+, 
+ex³ùed
+, 
+»®
+, 
+mes§ge
+); \
+
+45 
+	`ex™
+(1); \
+
+47 
+	`´štf
+("[%s-%s-L%i-%s] OK:ƒx³ùed <%i>‡nd wa <%i>: %s\n",
+TEST_INFO
+, 
+ex³ùed
+, 
+»®
+, 
+mes§ge
+); \
+
+48 } 0)
+
+	)
+
+51 
+	#ASSERT_TRUE
+(
+»®
+,
+mes§ge
+) \
+
+53 ià(!(
+»®
+)) \
+
+55 
+	`´štf
+("[%s-%s-L%i-%s] FAILED:ƒx³ùedrue: %s\n",
+TEST_INFO
+, 
+mes§ge
+); \
+
+56 
+	`ex™
+(1); \
+
+58 
+	`´štf
+("[%s-%s-L%i-%s] OK:ƒx³ùedrue: %s\n",
+TEST_INFO
+, 
+mes§ge
+); \
+
+59 } 0)
+
+	)
+
+63 
+	#ASSERT_ERROR
+(
+ex³ùed
+,
+mes§ge
+) \
+
+65 
+»suÉ
+ = (
+ex³ùed
+); \
+
+66 ià(
+»suÉ
+ =ğ(
+RC_OK
+)) \
+
+68 
+	`´štf
+("[%s-%s-L%i-%s] FAILED:ƒx³ùed‡À”rÜ: %s\n",
+TEST_INFO
+, 
+mes§ge
+); \
+
+69 
+	`ex™
+(1); \
+
+71 
+	`´štf
+("[%s-%s-L%i-%s] OK:ƒx³ùed‡À”rÜ‡nd wa RC <%i>: %s\n",
+TEST_INFO
+, 
+»suÉ
+ , 
+mes§ge
+); \
+
+72 } 0)
+
+	)
+
+75 
+	#TEST_DONE
+() \
+
+77 
+	`´štf
+("[%s-%s-L%i-%s] OK: fšishede¡\n\n",
+TEST_INFO
+); \
+
+78 } 0)
+
+	)
+
+	@
+1
+.
+0
+9
+119
+buffer_mgr.h
+buffer_mgr_stat.c
+buffer_mgr_stat.h
+dberror.c
+dberror.h
+dt.h
+storage_mgr.h
+test_assign2_1.c
+test_helper.h
