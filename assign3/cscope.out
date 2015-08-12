@@ -1,0 +1,8632 @@
+cscope 15 $HOME/development/Assignment/assign3               0000044175
+	@buffer_mgr.h
+
+1 #i‚de‡
+BUFFER_MANAGER_H
+
+
+2 
+	#BUFFER_MANAGER_H
+
+
+	)
+
+5 
+	~"dbîr‹.h
+"
+
+8 
+	~"dt.h
+"
+
+11 
+	eRïœ˚mítSå©egy
+ {
+
+12 
+	mRS_FIFO
+ = 0,
+
+13 
+	mRS_LRU
+ = 1,
+
+14 
+	mRS_CLOCK
+ = 2,
+
+15 
+	mRS_LFU
+ = 3,
+
+16 
+	mRS_LRU_K
+ = 4
+
+17 } 
+	tRïœ˚mítSå©egy
+;
+
+20 
+	tPageNumbî
+;
+
+21 
+	#NO_PAGE
+ -1
+
+	)
+
+23 
+	sBM_Buf„rPoﬁ
+ {
+
+24 *
+	m∑geFûe
+;
+
+25 
+	mnumPages
+;
+
+26 
+Rïœ˚mítSå©egy
+ 
+	m°øãgy
+;
+
+27 *
+	mmgmtD©a
+;
+
+29 } 
+	tBM_Buf„rPoﬁ
+;
+
+31 
+	sBM_PageH™dÀ
+ {
+
+32 
+PageNumbî
+ 
+	m∑geNum
+;
+
+33 *
+	md©a
+;
+
+34 } 
+	tBM_PageH™dÀ
+;
+
+37 
+	#MAKE_POOL
+() \
+
+38 ((
+BM_Buf„rPoﬁ
+ *Ë
+	`mÆloc
+ ((BM_Buf„rPoﬁ)))
+
+	)
+
+40 
+	#MAKE_PAGE_HANDLE
+() \
+
+41 ((
+BM_PageH™dÀ
+ *Ë
+	`mÆloc
+ ((BM_PageH™dÀ)))
+
+	)
+
+44 
+RC
+ 
+öôBuf„rPoﬁ
+(
+BM_Buf„rPoﬁ
+ *c⁄° 
+bm
+, c⁄° *c⁄° 
+∑geFûeName
+,
+
+45 c⁄° 
+numPages
+, 
+Rïœ˚mítSå©egy
+ 
+°øãgy
+,
+
+46 *
+°øtD©a
+);
+
+47 
+RC
+ 
+shutdownBuf„rPoﬁ
+(
+BM_Buf„rPoﬁ
+ *c⁄° 
+bm
+);
+
+48 
+RC
+ 
+f‹˚FlushPoﬁ
+(
+BM_Buf„rPoﬁ
+ *c⁄° 
+bm
+);
+
+51 
+RC
+ 
+m¨kDúty
+ (
+BM_Buf„rPoﬁ
+ *c⁄° 
+bm
+, 
+BM_PageH™dÀ
+ *c⁄° 
+∑ge
+);
+
+52 
+RC
+ 
+u≈öPage
+ (
+BM_Buf„rPoﬁ
+ *c⁄° 
+bm
+, 
+BM_PageH™dÀ
+ *c⁄° 
+∑ge
+);
+
+53 
+RC
+ 
+f‹˚Page
+ (
+BM_Buf„rPoﬁ
+ *c⁄° 
+bm
+, 
+BM_PageH™dÀ
+ *c⁄° 
+∑ge
+);
+
+54 
+RC
+ 
+pöPage
+ (
+BM_Buf„rPoﬁ
+ *c⁄° 
+bm
+, 
+BM_PageH™dÀ
+ *c⁄° 
+∑ge
+,
+
+55 c⁄° 
+PageNumbî
+ 
+∑geNum
+);
+
+58 
+PageNumbî
+ *
+gëFømeC⁄ã¡s
+ (
+BM_Buf„rPoﬁ
+ *c⁄° 
+bm
+);
+
+59 
+boﬁ
+ *
+gëDútyFœgs
+ (
+BM_Buf„rPoﬁ
+ *c⁄° 
+bm
+);
+
+60 *
+gëFixCou¡s
+ (
+BM_Buf„rPoﬁ
+ *c⁄° 
+bm
+);
+
+61 
+gëNumRódIO
+ (
+BM_Buf„rPoﬁ
+ *c⁄° 
+bm
+);
+
+62 
+gëNumWrôeIO
+ (
+BM_Buf„rPoﬁ
+ *c⁄° 
+bm
+);
+
+	@buffer_mgr_stat.c
+
+1 
+	~"buf„r_mgr_°©.h
+"
+
+2 
+	~"buf„r_mgr.h
+"
+
+4 
+	~<°dio.h
+>
+
+5 
+	~<°dlib.h
+>
+
+8 
+¥ötSå©
+ (
+BM_Buf„rPoﬁ
+ *c⁄° 
+bm
+);
+
+12 
+	$¥ötPoﬁC⁄ã¡
+ (
+BM_Buf„rPoﬁ
+ *c⁄° 
+bm
+)
+
+14 
+PageNumbî
+ *
+‰ameC⁄ã¡
+;
+
+15 
+boﬁ
+ *
+dúty
+;
+
+16 *
+fixCou¡
+;
+
+17 
+i
+;
+
+19 
+‰ameC⁄ã¡
+ = 
+	`gëFømeC⁄ã¡s
+(
+bm
+);
+
+20 
+dúty
+ = 
+	`gëDútyFœgs
+(
+bm
+);
+
+21 
+fixCou¡
+ = 
+	`gëFixCou¡s
+(
+bm
+);
+
+23 
+	`¥ötf
+("{");
+
+24 
+	`¥ötSå©
+(
+bm
+);
+
+25 
+	`¥ötf
+(" %i}: ", 
+bm
+->
+numPages
+);
+
+27 
+i
+ = 0; i < 
+bm
+->
+numPages
+; i++)
+
+28 
+	`¥ötf
+("%s[%i%s%i]", ((
+i
+ =0Ë? "" : ","Ë, 
+‰ameC⁄ã¡
+[i], (
+dúty
+[i] ? "x": " "), 
+fixCou¡
+[i]);
+
+29 
+	`¥ötf
+("\n");
+
+30 
+	}
+}
+
+33 
+	$•rötPoﬁC⁄ã¡
+ (
+BM_Buf„rPoﬁ
+ *c⁄° 
+bm
+)
+
+35 
+PageNumbî
+ *
+‰ameC⁄ã¡
+;
+
+36 
+boﬁ
+ *
+dúty
+;
+
+37 *
+fixCou¡
+;
+
+38 
+i
+;
+
+39 *
+mesßge
+;
+
+40 
+pos
+ = 0;
+
+42 
+mesßge
+ = (*Ë
+	`mÆloc
+(256 + (22 * 
+bm
+->
+numPages
+));
+
+43 
+‰ameC⁄ã¡
+ = 
+	`gëFømeC⁄ã¡s
+(
+bm
+);
+
+44 
+dúty
+ = 
+	`gëDútyFœgs
+(
+bm
+);
+
+45 
+fixCou¡
+ = 
+	`gëFixCou¡s
+(
+bm
+);
+
+47 
+i
+ = 0; i < 
+bm
+->
+numPages
+; i++)
+
+48 
+pos
+ +
+	`•rötf
+(
+mesßge
+ +Öos, "%s[%i%s%i]", ((
+i
+ =0Ë? "" : ","Ë, 
+‰ameC⁄ã¡
+[i], (
+dúty
+[i] ? "x": " "), 
+fixCou¡
+[i]);
+
+50  
+mesßge
+;
+
+51 
+	}
+}
+
+55 
+	$¥ötPageC⁄ã¡
+ (
+BM_PageH™dÀ
+ *c⁄° 
+∑ge
+)
+
+57 
+i
+;
+
+59 
+	`¥ötf
+("[Pagê%i]\n", 
+∑ge
+->
+∑geNum
+);
+
+61 
+i
+ = 1; i <
+PAGE_SIZE
+; i++)
+
+62 
+	`¥ötf
+("%02X%s%s", 
+∑ge
+->
+d©a
+[
+i
+], (i % 8) ? "" : " ", (i % 64) ? "" : "\n");
+
+63 
+	}
+}
+
+66 
+	$•rötPageC⁄ã¡
+ (
+BM_PageH™dÀ
+ *c⁄° 
+∑ge
+)
+
+68 
+i
+;
+
+69 *
+mesßge
+;
+
+70 
+pos
+ = 0;
+
+72 
+mesßge
+ = (*Ë
+	`mÆloc
+(30 + (2 * 
+PAGE_SIZE
+) + (PAGE_SIZE % 64) + (PAGE_SIZE % 8));
+
+73 
+pos
+ +
+	`•rötf
+(
+mesßge
+ +Öos, "[Pagê%i]\n", 
+∑ge
+->
+∑geNum
+);
+
+75 
+i
+ = 1; i <
+PAGE_SIZE
+; i++)
+
+76 
+pos
+ +
+	`•rötf
+(
+mesßge
+ +Öos, "%02X%s%s", 
+∑ge
+->
+d©a
+[
+i
+], (i % 8) ? "" : " ", (i % 64) ? "" : "\n");
+
+78  
+mesßge
+;
+
+79 
+	}
+}
+
+82 
+	$¥ötSå©
+ (
+BM_Buf„rPoﬁ
+ *c⁄° 
+bm
+)
+
+84 
+bm
+->
+°øãgy
+)
+
+86 
+RS_FIFO
+:
+
+87 
+	`¥ötf
+("FIFO");
+
+89 
+RS_LRU
+:
+
+90 
+	`¥ötf
+("LRU");
+
+92 
+RS_CLOCK
+:
+
+93 
+	`¥ötf
+("CLOCK");
+
+95 
+RS_LFU
+:
+
+96 
+	`¥ötf
+("LFU");
+
+98 
+RS_LRU_K
+:
+
+99 
+	`¥ötf
+("LRU-K");
+
+102 
+	`¥ötf
+("%i", 
+bm
+->
+°øãgy
+);
+
+105 
+	}
+}
+
+	@buffer_mgr_stat.h
+
+1 #i‚de‡
+BUFFER_MGR_STAT_H
+
+
+2 
+	#BUFFER_MGR_STAT_H
+
+
+	)
+
+4 
+	~"buf„r_mgr.h
+"
+
+7 
+¥ötPoﬁC⁄ã¡
+ (
+BM_Buf„rPoﬁ
+ *c⁄° 
+bm
+);
+
+8 
+¥ötPageC⁄ã¡
+ (
+BM_PageH™dÀ
+ *c⁄° 
+∑ge
+);
+
+9 *
+•rötPoﬁC⁄ã¡
+ (
+BM_Buf„rPoﬁ
+ *c⁄° 
+bm
+);
+
+10 *
+•rötPageC⁄ã¡
+ (
+BM_PageH™dÀ
+ *c⁄° 
+∑ge
+);
+
+	@dberror.c
+
+1 
+	~"dbîr‹.h
+"
+
+3 
+	~<°rög.h
+>
+
+4 
+	~<°dlib.h
+>
+
+5 
+	~<°dio.h
+>
+
+7 *
+	gRC_mesßge
+;
+
+11 
+	$¥ötEº‹
+ (
+RC
+ 
+îr‹
+)
+
+13 i‡(
+RC_mesßge
+ !
+NULL
+)
+
+14 
+	`¥ötf
+("EC (%i), \"%s\"\n", 
+îr‹
+, 
+RC_mesßge
+);
+
+16 
+	`¥ötf
+("EC (%i)\n", 
+îr‹
+);
+
+17 
+	}
+}
+
+20 
+	$îr‹Mesßge
+ (
+RC
+ 
+îr‹
+)
+
+22 *
+mesßge
+;
+
+24 i‡(
+RC_mesßge
+ !
+NULL
+)
+
+26 
+mesßge
+ = (*Ë
+	`mÆloc
+(
+	`°æí
+(
+RC_mesßge
+) + 30);
+
+27 
+	`•rötf
+(
+mesßge
+, "EC (%i), \"%s\"\n", 
+îr‹
+, 
+RC_mesßge
+);
+
+31 
+mesßge
+ = (*Ë
+	`mÆloc
+(30);
+
+32 
+	`•rötf
+(
+mesßge
+, "EC (%i)\n", 
+îr‹
+);
+
+35  
+mesßge
+;
+
+36 
+	}
+}
+
+	@dberror.h
+
+1 #i‚de‡
+DBERROR_H
+
+
+2 
+	#DBERROR_H
+
+
+	)
+
+4 
+	~"°dio.h
+"
+
+7 
+	#PAGE_SIZE
+ 4096
+
+	)
+
+10 
+	tRC
+;
+
+12 
+	#RC_OK
+ 0
+
+	)
+
+13 
+	#RC_FILE_NOT_FOUND
+ 1
+
+	)
+
+14 
+	#RC_FILE_HANDLE_NOT_INIT
+ 2
+
+	)
+
+15 
+	#RC_WRITE_FAILED
+ 3
+
+	)
+
+16 
+	#RC_READ_NON_EXISTING_PAGE
+ 4
+
+	)
+
+18 
+	#RC_RM_COMPARE_VALUE_OF_DIFFERENT_DATATYPE
+ 200
+
+	)
+
+19 
+	#RC_RM_EXPR_RESULT_IS_NOT_BOOLEAN
+ 201
+
+	)
+
+20 
+	#RC_RM_BOOLEAN_EXPR_ARG_IS_NOT_BOOLEAN
+ 202
+
+	)
+
+21 
+	#RC_RM_NO_MORE_TUPLES
+ 203
+
+	)
+
+22 
+	#RC_RM_NO_PRINT_FOR_DATATYPE
+ 204
+
+	)
+
+23 
+	#RC_RM_UNKOWN_DATATYPE
+ 205
+
+	)
+
+25 
+	#RC_IM_KEY_NOT_FOUND
+ 300
+
+	)
+
+26 
+	#RC_IM_KEY_ALREADY_EXISTS
+ 301
+
+	)
+
+27 
+	#RC_IM_N_TO_LAGE
+ 302
+
+	)
+
+28 
+	#RC_IM_NO_MORE_ENTRIES
+ 303
+
+	)
+
+31 *
+RC_mesßge
+;
+
+34 
+¥ötEº‹
+ (
+RC
+ 
+îr‹
+);
+
+35 *
+îr‹Mesßge
+ (
+RC
+ 
+îr‹
+);
+
+37 
+	#THROW
+(
+rc
+,
+mesßge
+) \
+
+39 
+RC_mesßge
+=
+mesßge
+; \
+
+40  
+rc
+; \
+
+42 
+
+	)
+
+44 
+	#CHECK
+(
+code
+) \
+
+46 
+rc_öã∫Æ
+ = (
+code
+); \
+
+47 i‡(
+rc_öã∫Æ
+ !
+RC_OK
+) \
+
+49 *
+mesßge
+ = 
+	`îr‹Mesßge
+(
+rc_öã∫Æ
+); \
+
+50 
+	`¥ötf
+("[%s-L%i-%s] ERROR: O≥øti⁄Ñëu∫edÉº‹: %s\n",
+__FILE__
+, 
+__LINE__
+, 
+__TIME__
+, 
+mesßge
+); \
+
+51 
+	`‰ì
+(
+mesßge
+); \
+
+52 
+	`exô
+(1); \
+
+54 } 0);
+
+	)
+
+	@dt.h
+
+1 #i‚de‡
+DT_H
+
+
+2 
+	#DT_H
+
+
+	)
+
+5 #i‚de‡
+boﬁ
+
+
+6 
+	tboﬁ
+;
+
+7 
+	#åue
+ 1
+
+	)
+
+8 
+	#Ál£
+ 0
+
+	)
+
+11 
+	#TRUE
+ 
+åue
+
+
+	)
+
+12 
+	#FALSE
+ 
+Ál£
+
+
+	)
+
+	@expr.c
+
+1 
+	~<°rög.h
+>
+
+2 
+	~<°dlib.h
+>
+
+4 
+	~"dbîr‹.h
+"
+
+5 
+	~"ªc‹d_mgr.h
+"
+
+6 
+	~"ex¥.h
+"
+
+7 
+	~"èbÀs.h
+"
+
+10 
+RC
+
+
+11 
+	$vÆueEquÆs
+ (
+VÆue
+ *
+À·
+, VÆuê*
+right
+, VÆuê*
+ªsu…
+)
+
+13 if(
+À·
+->
+dt
+ !
+right
+->dt)
+
+14 
+	`THROW
+(
+RC_RM_COMPARE_VALUE_OF_DIFFERENT_DATATYPE
+, "equality comparison only supported for values ofÅhe same datatype");
+
+16 
+ªsu…
+->
+dt
+ = 
+DT_BOOL
+;
+
+18 
+À·
+->
+dt
+) {
+
+19 
+DT_INT
+:
+
+20 
+ªsu…
+->
+v
+.
+boﬁV
+ = (
+À·
+->v.
+ötV
+ =
+right
+->v.intV);
+
+22 
+DT_FLOAT
+:
+
+23 
+ªsu…
+->
+v
+.
+boﬁV
+ = (
+À·
+->v.
+ÊﬂtV
+ =
+right
+->v.floatV);
+
+25 
+DT_BOOL
+:
+
+26 
+ªsu…
+->
+v
+.
+boﬁV
+ = (
+À·
+->v.boﬁV =
+right
+->v.boolV);
+
+28 
+DT_STRING
+:
+
+29 
+ªsu…
+->
+v
+.
+boﬁV
+ = (
+	`°rcmp
+(
+À·
+->v.
+°rögV
+, 
+right
+->v.stringV) == 0);
+
+33  
+RC_OK
+;
+
+34 
+	}
+}
+
+36 
+RC
+
+
+37 
+	$vÆueSmÆÀr
+ (
+VÆue
+ *
+À·
+, VÆuê*
+right
+, VÆuê*
+ªsu…
+)
+
+39 if(
+À·
+->
+dt
+ !
+right
+->dt)
+
+40 
+	`THROW
+(
+RC_RM_COMPARE_VALUE_OF_DIFFERENT_DATATYPE
+, "equality comparison only supported for values ofÅhe same datatype");
+
+42 
+ªsu…
+->
+dt
+ = 
+DT_BOOL
+;
+
+44 
+À·
+->
+dt
+) {
+
+45 
+DT_INT
+:
+
+46 
+ªsu…
+->
+v
+.
+boﬁV
+ = (
+À·
+->v.
+ötV
+ < 
+right
+->v.intV);
+
+48 
+DT_FLOAT
+:
+
+49 
+ªsu…
+->
+v
+.
+boﬁV
+ = (
+À·
+->v.
+ÊﬂtV
+ < 
+right
+->v.floatV);
+
+51 
+DT_BOOL
+:
+
+52 
+ªsu…
+->
+v
+.
+boﬁV
+ = (
+À·
+->v.boﬁV < 
+right
+->v.boolV);
+
+53 
+DT_STRING
+:
+
+54 
+ªsu…
+->
+v
+.
+boﬁV
+ = (
+	`°rcmp
+(
+À·
+->v.
+°rögV
+, 
+right
+->v.stringV) < 0);
+
+58  
+RC_OK
+;
+
+59 
+	}
+}
+
+61 
+RC
+
+
+62 
+	$boﬁNŸ
+ (
+VÆue
+ *
+öput
+, VÆuê*
+ªsu…
+)
+
+64 i‡(
+öput
+->
+dt
+ !
+DT_BOOL
+)
+
+65 
+	`THROW
+(
+RC_RM_BOOLEAN_EXPR_ARG_IS_NOT_BOOLEAN
+, "boolean NOTÑequires boolean input");
+
+66 
+ªsu…
+->
+dt
+ = 
+DT_BOOL
+;
+
+67 
+ªsu…
+->
+v
+.
+boﬁV
+ = !(
+öput
+->v.boolV);
+
+69  
+RC_OK
+;
+
+70 
+	}
+}
+
+72 
+RC
+
+
+73 
+	$boﬁAnd
+ (
+VÆue
+ *
+À·
+, VÆuê*
+right
+, VÆuê*
+ªsu…
+)
+
+75 i‡(
+À·
+->
+dt
+ !
+DT_BOOL
+ || 
+right
+->dt != DT_BOOL)
+
+76 
+	`THROW
+(
+RC_RM_BOOLEAN_EXPR_ARG_IS_NOT_BOOLEAN
+, "boolean ANDÑequires boolean inputs");
+
+77 
+ªsu…
+->
+v
+.
+boﬁV
+ = (
+À·
+->v.boﬁV && 
+right
+->v.boolV);
+
+79  
+RC_OK
+;
+
+80 
+	}
+}
+
+82 
+RC
+
+
+83 
+	$boﬁOr
+ (
+VÆue
+ *
+À·
+, VÆuê*
+right
+, VÆuê*
+ªsu…
+)
+
+85 i‡(
+À·
+->
+dt
+ !
+DT_BOOL
+ || 
+right
+->dt != DT_BOOL)
+
+86 
+	`THROW
+(
+RC_RM_BOOLEAN_EXPR_ARG_IS_NOT_BOOLEAN
+, "boolean ORÑequires boolean inputs");
+
+87 
+ªsu…
+->
+v
+.
+boﬁV
+ = (
+À·
+->v.boﬁV || 
+right
+->v.boolV);
+
+89  
+RC_OK
+;
+
+90 
+	}
+}
+
+92 
+RC
+
+
+93 
+	$evÆEx¥
+ (
+Rec‹d
+ *
+ªc‹d
+, 
+Schema
+ *
+schema
+, 
+Ex¥
+ *
+ex¥
+, 
+VÆue
+ **
+ªsu…
+)
+
+95 
+VÆue
+ *
+lIn
+;
+
+96 
+VÆue
+ *
+rIn
+;
+
+97 
+	`MAKE_VALUE
+(*
+ªsu…
+, 
+DT_INT
+, -1);
+
+99 
+ex¥
+->
+ty≥
+)
+
+101 
+EXPR_OP
+:
+
+103 
+O≥øt‹
+ *
+›
+ = 
+ex¥
+->expr.op;
+
+104 
+boﬁ
+ 
+twoArgs
+ = (
+›
+->
+ty≥
+ !
+OP_BOOL_NOT
+);
+
+108 
+	`CHECK
+(
+	`evÆEx¥
+(
+ªc‹d
+, 
+schema
+, 
+›
+->
+¨gs
+[0], &
+lIn
+));
+
+109 i‡(
+twoArgs
+)
+
+110 
+	`CHECK
+(
+	`evÆEx¥
+(
+ªc‹d
+, 
+schema
+, 
+›
+->
+¨gs
+[1], &
+rIn
+));
+
+112 
+›
+->
+ty≥
+)
+
+114 
+OP_BOOL_NOT
+:
+
+115 
+	`CHECK
+(
+	`boﬁNŸ
+(
+lIn
+, *
+ªsu…
+));
+
+117 
+OP_BOOL_AND
+:
+
+118 
+	`CHECK
+(
+	`boﬁAnd
+(
+lIn
+, 
+rIn
+, *
+ªsu…
+));
+
+120 
+OP_BOOL_OR
+:
+
+121 
+	`CHECK
+(
+	`boﬁOr
+(
+lIn
+, 
+rIn
+, *
+ªsu…
+));
+
+123 
+OP_COMP_EQUAL
+:
+
+124 
+	`CHECK
+(
+	`vÆueEquÆs
+(
+lIn
+, 
+rIn
+, *
+ªsu…
+));
+
+126 
+OP_COMP_SMALLER
+:
+
+127 
+	`CHECK
+(
+	`vÆueSmÆÀr
+(
+lIn
+, 
+rIn
+, *
+ªsu…
+));
+
+134 
+	`‰ìVÆ
+(
+lIn
+);
+
+135 i‡(
+twoArgs
+)
+
+136 
+	`‰ìVÆ
+(
+rIn
+);
+
+139 
+EXPR_CONST
+:
+
+140 
+	`CPVAL
+(*
+ªsu…
+,
+ex¥
+->ex¥.
+c⁄s
+);
+
+142 
+EXPR_ATTRREF
+:
+
+143 
+	`‰ì
+(*
+ªsu…
+);
+
+144 
+	`CHECK
+(
+	`gëAâr
+(
+ªc‹d
+, 
+schema
+, 
+ex¥
+->ex¥.
+©åRef
+, 
+ªsu…
+));
+
+148  
+RC_OK
+;
+
+149 
+	}
+}
+
+151 
+RC
+
+
+152 
+	$‰ìEx¥
+ (
+Ex¥
+ *
+ex¥
+)
+
+154 
+ex¥
+->
+ty≥
+)
+
+156 
+EXPR_OP
+:
+
+158 
+O≥øt‹
+ *
+›
+ = 
+ex¥
+->expr.op;
+
+159 
+›
+->
+ty≥
+)
+
+161 
+OP_BOOL_NOT
+:
+
+162 
+	`‰ìEx¥
+(
+›
+->
+¨gs
+[0]);
+
+165 
+	`‰ìEx¥
+(
+›
+->
+¨gs
+[0]);
+
+166 
+	`‰ìEx¥
+(
+›
+->
+¨gs
+[1]);
+
+169 
+	`‰ì
+(
+›
+->
+¨gs
+);
+
+172 
+EXPR_CONST
+:
+
+173 
+	`‰ìVÆ
+(
+ex¥
+->ex¥.
+c⁄s
+);
+
+175 
+EXPR_ATTRREF
+:
+
+178 
+	`‰ì
+(
+ex¥
+);
+
+180  
+RC_OK
+;
+
+181 
+	}
+}
+
+184 
+	$‰ìVÆ
+ (
+VÆue
+ *
+vÆ
+)
+
+186 i‡(
+vÆ
+->
+dt
+ =
+DT_STRING
+)
+
+187 
+	`‰ì
+(
+vÆ
+->
+v
+.
+°rögV
+);
+
+188 
+	`‰ì
+(
+vÆ
+);
+
+189 
+	}
+}
+
+	@expr.h
+
+1 #i‚de‡
+EXPR_H
+
+
+2 
+	#EXPR_H
+
+
+	)
+
+4 
+	~"dbîr‹.h
+"
+
+5 
+	~"èbÀs.h
+"
+
+8 
+	eEx¥Ty≥
+ {
+
+9 
+	mEXPR_OP
+,
+
+10 
+	mEXPR_CONST
+,
+
+11 
+	mEXPR_ATTRREF
+
+
+12 } 
+	tEx¥Ty≥
+;
+
+14 
+	sEx¥
+ {
+
+15 
+Ex¥Ty≥
+ 
+	mty≥
+;
+
+16 
+	uex¥
+ {
+
+17 
+VÆue
+ *
+	mc⁄s
+;
+
+18 
+	m©åRef
+;
+
+19 
+O≥øt‹
+ *
+	m›
+;
+
+20 } 
+	mex¥
+;
+
+21 } 
+	tEx¥
+;
+
+24 
+	eOpTy≥
+ {
+
+25 
+	mOP_BOOL_AND
+,
+
+26 
+	mOP_BOOL_OR
+,
+
+27 
+	mOP_BOOL_NOT
+,
+
+28 
+	mOP_COMP_EQUAL
+,
+
+29 
+	mOP_COMP_SMALLER
+
+
+30 } 
+	tOpTy≥
+;
+
+32 
+	sO≥øt‹
+ {
+
+33 
+OpTy≥
+ 
+	mty≥
+;
+
+34 
+Ex¥
+ **
+	m¨gs
+;
+
+35 } 
+	tO≥øt‹
+;
+
+38 
+RC
+ 
+vÆueEquÆs
+ (
+VÆue
+ *
+À·
+, VÆuê*
+right
+, VÆuê*
+ªsu…
+);
+
+39 
+RC
+ 
+vÆueSmÆÀr
+ (
+VÆue
+ *
+À·
+, VÆuê*
+right
+, VÆuê*
+ªsu…
+);
+
+40 
+RC
+ 
+boﬁNŸ
+ (
+VÆue
+ *
+öput
+, VÆuê*
+ªsu…
+);
+
+41 
+RC
+ 
+boﬁAnd
+ (
+VÆue
+ *
+À·
+, VÆuê*
+right
+, VÆuê*
+ªsu…
+);
+
+42 
+RC
+ 
+boﬁOr
+ (
+VÆue
+ *
+À·
+, VÆuê*
+right
+, VÆuê*
+ªsu…
+);
+
+43 
+RC
+ 
+evÆEx¥
+ (
+Rec‹d
+ *
+ªc‹d
+, 
+Schema
+ *
+schema
+, 
+Ex¥
+ *
+ex¥
+, 
+VÆue
+ **
+ªsu…
+);
+
+44 
+RC
+ 
+‰ìEx¥
+ (
+Ex¥
+ *
+ex¥
+);
+
+45 
+‰ìVÆ
+(
+VÆue
+ *
+vÆ
+);
+
+48 
+	#CPVAL
+(
+_ªsu…
+,
+_öput
+) \
+
+50 (
+_ªsu…
+)->
+dt
+ = 
+_öput
+->dt; \
+
+51 
+_öput
+->
+dt
+) \
+
+53 
+DT_INT
+: \
+
+54 (
+_ªsu…
+)->
+v
+.
+ötV
+ = 
+_öput
+->v.intV; \
+
+56 
+DT_STRING
+: \
+
+57 (
+_ªsu…
+)->
+v
+.
+°rögV
+ = (*Ë
+	`mÆloc
+(
+	`°æí
+(
+_öput
+->v.stringV)); \
+
+58 
+	`°r˝y
+((
+_ªsu…
+)->
+v
+.
+°rögV
+, 
+_öput
+->v.stringV); \
+
+60 
+DT_FLOAT
+: \
+
+61 (
+_ªsu…
+)->
+v
+.
+ÊﬂtV
+ = 
+_öput
+->v.floatV; \
+
+63 
+DT_BOOL
+: \
+
+64 (
+_ªsu…
+)->
+v
+.
+boﬁV
+ = 
+_öput
+->v.boolV; \
+
+67 } 0)
+
+	)
+
+69 
+	#MAKE_BINOP_EXPR
+(
+_ªsu…
+,
+_À·
+,
+_right
+,
+_›ty≥
+) \
+
+71 
+O≥øt‹
+ *
+_›
+ = (O≥øt‹ *Ë
+	`mÆloc
+((Operator)); \
+
+72 
+_ªsu…
+ = (
+Ex¥
+ *Ë
+	`mÆloc
+((Expr)); \
+
+73 
+_ªsu…
+->
+ty≥
+ = 
+EXPR_OP
+; \
+
+74 
+_ªsu…
+->
+ex¥
+.
+›
+ = 
+_›
+; \
+
+75 
+_›
+->
+ty≥
+ = 
+_›ty≥
+; \
+
+76 
+_›
+->
+¨gs
+ = (
+Ex¥
+ **Ë
+	`mÆloc
+(2 * (Expr*)); \
+
+77 
+_›
+->
+¨gs
+[0] = 
+_À·
+; \
+
+78 
+_›
+->
+¨gs
+[1] = 
+_right
+; \
+
+79 } 0)
+
+	)
+
+81 
+	#MAKE_UNOP_EXPR
+(
+_ªsu…
+,
+_öput
+,
+_›ty≥
+) \
+
+83 
+O≥øt‹
+ *
+_›
+ = (O≥øt‹ *Ë
+	`mÆloc
+((Operator)); \
+
+84 
+_ªsu…
+ = (
+Ex¥
+ *Ë
+	`mÆloc
+((Expr)); \
+
+85 
+_ªsu…
+->
+ty≥
+ = 
+EXPR_OP
+; \
+
+86 
+_ªsu…
+->
+ex¥
+.
+›
+ = 
+_›
+; \
+
+87 
+_›
+->
+ty≥
+ = 
+_›ty≥
+; \
+
+88 
+_›
+->
+¨gs
+ = (
+Ex¥
+ **Ë
+	`mÆloc
+((Expr*)); \
+
+89 
+_›
+->
+¨gs
+[0] = 
+_öput
+; \
+
+90 } 0)
+
+	)
+
+92 
+	#MAKE_ATTRREF
+(
+_ªsu…
+,
+_©å
+) \
+
+94 
+_ªsu…
+ = (
+Ex¥
+ *Ë
+	`mÆloc
+((Expr)); \
+
+95 
+_ªsu…
+->
+ty≥
+ = 
+EXPR_ATTRREF
+; \
+
+96 
+_ªsu…
+->
+ex¥
+.
+©åRef
+ = 
+_©å
+; \
+
+97 } 0)
+
+	)
+
+99 
+	#MAKE_CONS
+(
+_ªsu…
+,
+_vÆue
+) \
+
+101 
+_ªsu…
+ = (
+Ex¥
+ *Ë
+	`mÆloc
+((Expr)); \
+
+102 
+_ªsu…
+->
+ty≥
+ = 
+EXPR_CONST
+; \
+
+103 
+_ªsu…
+->
+ex¥
+.
+c⁄s
+ = 
+_vÆue
+; \
+
+104 } 0)
+
+	)
+
+	@record_mgr.h
+
+1 #i‚de‡
+RECORD_MGR_H
+
+
+2 
+	#RECORD_MGR_H
+
+
+	)
+
+4 
+	~"dbîr‹.h
+"
+
+5 
+	~"ex¥.h
+"
+
+6 
+	~"èbÀs.h
+"
+
+9 
+	sRM_SˇnH™dÀ
+
+
+11 
+RM_TabÀD©a
+ *
+	mªl
+;
+
+12 *
+	mmgmtD©a
+;
+
+13 } 
+	tRM_SˇnH™dÀ
+;
+
+16 
+RC
+ 
+öôRec‹dM™agî
+ (*
+mgmtD©a
+);
+
+17 
+RC
+ 
+shutdownRec‹dM™agî
+ ();
+
+18 
+RC
+ 
+¸óãTabÀ
+ (*
+«me
+, 
+Schema
+ *
+schema
+);
+
+19 
+RC
+ 
+›íTabÀ
+ (
+RM_TabÀD©a
+ *
+ªl
+, *
+«me
+);
+
+20 
+RC
+ 
+˛o£TabÀ
+ (
+RM_TabÀD©a
+ *
+ªl
+);
+
+21 
+RC
+ 
+dñëeTabÀ
+ (*
+«me
+);
+
+22 
+gëNumTu∂es
+ (
+RM_TabÀD©a
+ *
+ªl
+);
+
+25 
+RC
+ 
+ö£πRec‹d
+ (
+RM_TabÀD©a
+ *
+ªl
+, 
+Rec‹d
+ *
+ªc‹d
+);
+
+26 
+RC
+ 
+dñëeRec‹d
+ (
+RM_TabÀD©a
+ *
+ªl
+, 
+RID
+ 
+id
+);
+
+27 
+RC
+ 
+upd©eRec‹d
+ (
+RM_TabÀD©a
+ *
+ªl
+, 
+Rec‹d
+ *
+ªc‹d
+);
+
+28 
+RC
+ 
+gëRec‹d
+ (
+RM_TabÀD©a
+ *
+ªl
+, 
+RID
+ 
+id
+, 
+Rec‹d
+ *
+ªc‹d
+);
+
+31 
+RC
+ 
+°¨tSˇn
+ (
+RM_TabÀD©a
+ *
+ªl
+, 
+RM_SˇnH™dÀ
+ *
+sˇn
+, 
+Ex¥
+ *
+c⁄d
+);
+
+32 
+RC
+ 
+√xt
+ (
+RM_SˇnH™dÀ
+ *
+sˇn
+, 
+Rec‹d
+ *
+ªc‹d
+);
+
+33 
+RC
+ 
+˛o£Sˇn
+ (
+RM_SˇnH™dÀ
+ *
+sˇn
+);
+
+36 
+gëRec‹dSize
+ (
+Schema
+ *
+schema
+);
+
+37 
+Schema
+ *
+¸óãSchema
+ (
+numAâr
+, **
+©åNames
+, 
+D©aTy≥
+ *
+d©aTy≥s
+, *
+ty≥Lígth
+, 
+keySize
+, *
+keys
+);
+
+38 
+RC
+ 
+‰ìSchema
+ (
+Schema
+ *
+schema
+);
+
+41 
+RC
+ 
+¸óãRec‹d
+ (
+Rec‹d
+ **
+ªc‹d
+, 
+Schema
+ *
+schema
+);
+
+42 
+RC
+ 
+‰ìRec‹d
+ (
+Rec‹d
+ *
+ªc‹d
+);
+
+43 
+RC
+ 
+gëAâr
+ (
+Rec‹d
+ *
+ªc‹d
+, 
+Schema
+ *
+schema
+, 
+©åNum
+, 
+VÆue
+ **
+vÆue
+);
+
+44 
+RC
+ 
+£tAâr
+ (
+Rec‹d
+ *
+ªc‹d
+, 
+Schema
+ *
+schema
+, 
+©åNum
+, 
+VÆue
+ *
+vÆue
+);
+
+	@rm_serializer.c
+
+1 
+	~<°dio.h
+>
+
+2 
+	~<°dlib.h
+>
+
+3 
+	~<°rög.h
+>
+
+5 
+	~"dbîr‹.h
+"
+
+6 
+	~"èbÀs.h
+"
+
+7 
+	~"ªc‹d_mgr.h
+"
+
+10 
+	sV¨Såög
+ {
+
+11 *
+	mbuf
+;
+
+12 
+	msize
+;
+
+13 
+	mbufsize
+;
+
+14 } 
+	tV¨Såög
+;
+
+16 
+	#MAKE_VARSTRING
+(
+v¨
+) \
+
+18 
+v¨
+ = (
+V¨Såög
+ *Ë
+	`mÆloc
+((VarString)); \
+
+19 
+v¨
+->
+size
+ = 0; \
+
+20 
+v¨
+->
+bufsize
+ = 100; \
+
+21 
+v¨
+->
+buf
+ = 
+	`mÆloc
+(100); \
+
+22 } 0)
+
+	)
+
+24 
+	#FREE_VARSTRING
+(
+v¨
+) \
+
+26 
+	`‰ì
+(
+v¨
+->
+buf
+); \
+
+27 
+	`‰ì
+(
+v¨
+); \
+
+28 } 0)
+
+	)
+
+30 
+	#GET_STRING
+(
+ªsu…
+, 
+v¨
+) \
+
+32 
+ªsu…
+ = 
+	`mÆloc
+((
+v¨
+->
+size
+) + 1); \
+
+33 
+	`mem˝y
+(
+ªsu…
+, 
+v¨
+->
+buf
+, v¨->
+size
+); \
+
+34 
+ªsu…
+[
+v¨
+->
+size
+] = '\0'; \
+
+35 } 0)
+
+	)
+
+37 
+	#RETURN_STRING
+(
+v¨
+) \
+
+39 *
+ªsu…Så
+; \
+
+40 
+	`GET_STRING
+(
+ªsu…Så
+, 
+v¨
+); \
+
+41 
+	`FREE_VARSTRING
+(
+v¨
+); \
+
+42  
+ªsu…Så
+; \
+
+43 } 0)
+
+	)
+
+45 
+	#ENSURE_SIZE
+(
+v¨
+,
+√wsize
+) \
+
+47 i‡(
+v¨
+->
+bufsize
+ < 
+√wsize
+) \
+
+49 
+√wbufsize
+ = 
+v¨
+->
+bufsize
+; \
+
+50 (
+√wbufsize
+ *2Ë< 
+√wsize
+); \
+
+51 
+v¨
+->
+buf
+ = 
+	`ªÆloc
+(v¨->buf, 
+√wbufsize
+); \
+
+53 } 0)
+
+	)
+
+55 
+	#APPEND_STRING
+(
+v¨
+,
+°rög
+) \
+
+57 
+	`ENSURE_SIZE
+(
+v¨
+, v¨->
+size
+ + 
+	`°æí
+(
+°rög
+)); \
+
+58 
+	`mem˝y
+(
+v¨
+->
+buf
+ + v¨->
+size
+, 
+°rög
+, 
+	`°æí
+(string)); \
+
+59 
+v¨
+->
+size
+ +
+	`°æí
+(
+°rög
+); \
+
+60 } 0)
+
+	)
+
+62 
+	#APPEND
+(
+v¨
+, ...) \
+
+64 *
+tmp
+ = 
+	`mÆloc
+(10000); \
+
+65 
+	`•rötf
+(
+tmp
+, 
+__VA_ARGS__
+); \
+
+66 
+	`APPEND_STRING
+(
+v¨
+,
+tmp
+); \
+
+67 
+	`‰ì
+(
+tmp
+); \
+
+68 } 0)
+
+	)
+
+71 
+RC
+ 
+©åOff£t
+ (
+Schema
+ *
+schema
+, 
+©åNum
+, *
+ªsu…
+);
+
+75 
+	$£rülizeTabÀInfo
+(
+RM_TabÀD©a
+ *
+ªl
+)
+
+77 
+V¨Såög
+ *
+ªsu…
+;
+
+78 
+	`MAKE_VARSTRING
+(
+ªsu…
+);
+
+80 
+	`APPEND
+(
+ªsu…
+, "TABLE <%s> wôh <%i>Åu∂es:\n", 
+ªl
+->
+«me
+, 
+	`gëNumTu∂es
+(rel));
+
+81 
+	`APPEND_STRING
+(
+ªsu…
+, 
+	`£rülizeSchema
+(
+ªl
+->
+schema
+));
+
+83 
+	`RETURN_STRING
+(
+ªsu…
+);
+
+84 
+	}
+}
+
+87 
+	$£rülizeTabÀC⁄ã¡
+(
+RM_TabÀD©a
+ *
+ªl
+)
+
+89 
+i
+;
+
+90 
+V¨Såög
+ *
+ªsu…
+;
+
+91 
+RM_SˇnH™dÀ
+ *
+sc
+ = (RM_SˇnH™dÀ *Ë
+	`mÆloc
+((RM_ScanHandle));
+
+92 
+Rec‹d
+ *
+r
+ = (Rec‹d *Ë
+	`mÆloc
+((Record));
+
+93 
+	`MAKE_VARSTRING
+(
+ªsu…
+);
+
+95 
+i
+ = 0; i < 
+ªl
+->
+schema
+->
+numAâr
+; i++)
+
+96 
+	`APPEND
+(
+ªsu…
+, "%s%s", (
+i
+ !0Ë? ", " : "", 
+ªl
+->
+schema
+->
+©åNames
+[i]);
+
+98 
+	`°¨tSˇn
+(
+ªl
+, 
+sc
+, 
+NULL
+);
+
+100 
+	`√xt
+(
+sc
+, 
+r
+Ë!
+RC_RM_NO_MORE_TUPLES
+)
+
+102 
+	`APPEND_STRING
+(
+ªsu…
+,
+	`£rülizeRec‹d
+(
+r
+, 
+ªl
+->
+schema
+));
+
+103 
+	`APPEND_STRING
+(
+ªsu…
+,"\n");
+
+105 
+	`˛o£Sˇn
+(
+sc
+);
+
+107 
+	`RETURN_STRING
+(
+ªsu…
+);
+
+108 
+	}
+}
+
+112 
+	$£rülizeSchema
+(
+Schema
+ *
+schema
+)
+
+114 
+i
+;
+
+115 
+V¨Såög
+ *
+ªsu…
+;
+
+116 
+	`MAKE_VARSTRING
+(
+ªsu…
+);
+
+118 
+	`APPEND
+(
+ªsu…
+, "Schem®wôh <%i>áâribuã†(", 
+schema
+->
+numAâr
+);
+
+120 
+i
+ = 0; i < 
+schema
+->
+numAâr
+; i++)
+
+122 
+	`APPEND
+(
+ªsu…
+,"%s%s: ", (
+i
+ !0Ë? ", ": "", 
+schema
+->
+©åNames
+[i]);
+
+123 
+schema
+->
+d©aTy≥s
+[
+i
+])
+
+125 
+DT_INT
+:
+
+126 
+	`APPEND_STRING
+(
+ªsu…
+, "INT");
+
+128 
+DT_FLOAT
+:
+
+129 
+	`APPEND_STRING
+(
+ªsu…
+, "FLOAT");
+
+131 
+DT_STRING
+:
+
+132 
+	`APPEND
+(
+ªsu…
+,"STRING[%i]", 
+schema
+->
+ty≥Lígth
+[
+i
+]);
+
+134 
+DT_BOOL
+:
+
+135 
+	`APPEND_STRING
+(
+ªsu…
+,"BOOL");
+
+139 
+	`APPEND_STRING
+(
+ªsu…
+,")");
+
+141 
+	`APPEND_STRING
+(
+ªsu…
+," with keys: (");
+
+143 
+i
+ = 0; i < 
+schema
+->
+keySize
+; i++)
+
+144 
+	`APPEND
+(
+ªsu…
+, "%s%s", ((
+i
+ !0Ë? ", ": ""), 
+schema
+->
+©åNames
+[schema->
+keyAârs
+[i]]);
+
+146 
+	`APPEND_STRING
+(
+ªsu…
+,")\n");
+
+148 
+	`RETURN_STRING
+(
+ªsu…
+);
+
+149 
+	}
+}
+
+152 
+	$£rülizeRec‹d
+(
+Rec‹d
+ *
+ªc‹d
+, 
+Schema
+ *
+schema
+)
+
+154 
+V¨Såög
+ *
+ªsu…
+;
+
+155 
+	`MAKE_VARSTRING
+(
+ªsu…
+);
+
+156 
+i
+;
+
+158 
+	`APPEND
+(
+ªsu…
+, "[%i-%i] (", 
+ªc‹d
+->
+id
+.
+∑ge
+,Ñec‹d->id.
+¶Ÿ
+);
+
+160 
+i
+ = 0; i < 
+schema
+->
+numAâr
+; i++)
+
+162 
+	`APPEND_STRING
+(
+ªsu…
+, 
+	`£rülizeAâr
+ (
+ªc‹d
+, 
+schema
+, 
+i
+));
+
+163 
+	`APPEND
+(
+ªsu…
+, "%s", (
+i
+ == 0) ? "" : ",");
+
+166 
+	`APPEND_STRING
+(
+ªsu…
+, ")");
+
+168 
+	`RETURN_STRING
+(
+ªsu…
+);
+
+169 
+	}
+}
+
+172 
+	$£rülizeAâr
+(
+Rec‹d
+ *
+ªc‹d
+, 
+Schema
+ *
+schema
+, 
+©åNum
+)
+
+174 
+off£t
+;
+
+175 *
+©åD©a
+;
+
+176 
+V¨Såög
+ *
+ªsu…
+;
+
+177 
+	`MAKE_VARSTRING
+(
+ªsu…
+);
+
+179 
+	`©åOff£t
+(
+schema
+, 
+©åNum
+, &
+off£t
+);
+
+180 
+©åD©a
+ = 
+ªc‹d
+->
+d©a
+ + 
+off£t
+;
+
+182 
+schema
+->
+d©aTy≥s
+[
+©åNum
+])
+
+184 
+DT_INT
+:
+
+186 
+vÆ
+ = 0;
+
+187 
+	`mem˝y
+(&
+vÆ
+,
+©åD©a
+, ());
+
+188 
+	`APPEND
+(
+ªsu…
+, "%s:%i", 
+schema
+->
+©åNames
+[
+©åNum
+], 
+vÆ
+);
+
+191 
+DT_STRING
+:
+
+193 *
+buf
+;
+
+194 
+Àn
+ = 
+schema
+->
+ty≥Lígth
+[
+©åNum
+];
+
+195 
+buf
+ = (*Ë
+	`mÆloc
+(
+Àn
+ + 1);
+
+196 
+	`°∫˝y
+(
+buf
+, 
+©åD©a
+, 
+Àn
+);
+
+197 
+buf
+[
+Àn
+] = '\0';
+
+199 
+	`APPEND
+(
+ªsu…
+, "%s:%s", 
+schema
+->
+©åNames
+[
+©åNum
+], 
+buf
+);
+
+200 
+	`‰ì
+(
+buf
+);
+
+203 
+DT_FLOAT
+:
+
+205 
+vÆ
+;
+
+206 
+	`mem˝y
+(&
+vÆ
+,
+©åD©a
+, ());
+
+207 
+	`APPEND
+(
+ªsu…
+, "%s:%f", 
+schema
+->
+©åNames
+[
+©åNum
+], 
+vÆ
+);
+
+210 
+DT_BOOL
+:
+
+212 
+boﬁ
+ 
+vÆ
+;
+
+213 
+	`mem˝y
+(&
+vÆ
+,
+©åD©a
+, (
+boﬁ
+));
+
+214 
+	`APPEND
+(
+ªsu…
+, "%s:%s", 
+schema
+->
+©åNames
+[
+©åNum
+], 
+vÆ
+ ? "TRUE" : "FALSE");
+
+221 
+	`RETURN_STRING
+(
+ªsu…
+);
+
+222 
+	}
+}
+
+225 
+	$£rülizeVÆue
+(
+VÆue
+ *
+vÆ
+)
+
+227 
+V¨Såög
+ *
+ªsu…
+;
+
+228 
+	`MAKE_VARSTRING
+(
+ªsu…
+);
+
+230 
+vÆ
+->
+dt
+)
+
+232 
+DT_INT
+:
+
+233 
+	`APPEND
+(
+ªsu…
+,"%i",
+vÆ
+->
+v
+.
+ötV
+);
+
+235 
+DT_FLOAT
+:
+
+236 
+	`APPEND
+(
+ªsu…
+,"%f", 
+vÆ
+->
+v
+.
+ÊﬂtV
+);
+
+238 
+DT_STRING
+:
+
+239 
+	`APPEND
+(
+ªsu…
+,"%s", 
+vÆ
+->
+v
+.
+°rögV
+);
+
+241 
+DT_BOOL
+:
+
+242 
+	`APPEND_STRING
+(
+ªsu…
+, ((
+vÆ
+->
+v
+.
+boﬁV
+) ? "true" : "false"));
+
+246 
+	`RETURN_STRING
+(
+ªsu…
+);
+
+247 
+	}
+}
+
+249 
+VÆue
+ *
+
+250 
+	$°rögToVÆue
+(*
+vÆ
+)
+
+252 
+VÆue
+ *
+ªsu…
+ = (VÆuê*Ë
+	`mÆloc
+((Value));
+
+254 
+vÆ
+[0])
+
+257 
+ªsu…
+->
+dt
+ = 
+DT_INT
+;
+
+258 
+ªsu…
+->
+v
+.
+ötV
+ = 
+	`©oi
+(
+vÆ
+ + 1);
+
+261 
+ªsu…
+->
+dt
+ = 
+DT_FLOAT
+;
+
+262 
+ªsu…
+->
+v
+.
+ÊﬂtV
+ = 
+	`©of
+(
+vÆ
+ + 1);
+
+265 
+ªsu…
+->
+dt
+ = 
+DT_STRING
+;
+
+266 
+ªsu…
+->
+v
+.
+°rögV
+ = 
+	`mÆloc
+(
+	`°æí
+(
+vÆ
+));
+
+267 
+	`°r˝y
+(
+ªsu…
+->
+v
+.
+°rögV
+, 
+vÆ
+ + 1);
+
+270 
+ªsu…
+->
+dt
+ = 
+DT_BOOL
+;
+
+271 
+ªsu…
+->
+v
+.
+boﬁV
+ = (
+vÆ
+[1] ='t'Ë? 
+TRUE
+ : 
+FALSE
+;
+
+274 
+ªsu…
+->
+dt
+ = 
+DT_INT
+;
+
+275 
+ªsu…
+->
+v
+.
+ötV
+ = -1;
+
+279  
+ªsu…
+;
+
+280 
+	}
+}
+
+283 
+RC
+
+
+284 
+	$©åOff£t
+ (
+Schema
+ *
+schema
+, 
+©åNum
+, *
+ªsu…
+)
+
+286 
+off£t
+ = 0;
+
+287 
+©åPos
+ = 0;
+
+289 
+©åPos
+ = 0;áârPo†< 
+©åNum
+;áttrPos++)
+
+290 
+schema
+->
+d©aTy≥s
+[
+©åPos
+])
+
+292 
+DT_STRING
+:
+
+293 
+off£t
+ +
+schema
+->
+ty≥Lígth
+[
+©åPos
+];
+
+295 
+DT_INT
+:
+
+296 
+off£t
+ += ();
+
+298 
+DT_FLOAT
+:
+
+299 
+off£t
+ += ();
+
+301 
+DT_BOOL
+:
+
+302 
+off£t
+ +(
+boﬁ
+);
+
+306 *
+ªsu…
+ = 
+off£t
+;
+
+307  
+RC_OK
+;
+
+308 
+	}
+}
+
+	@storage_mgr.h
+
+1 #i‚de‡
+STORAGE_MGR_H
+
+
+2 
+	#STORAGE_MGR_H
+
+
+	)
+
+4 
+	~"dbîr‹.h
+"
+
+9 
+	sSM_FûeH™dÀ
+ {
+
+10 *
+	mfûeName
+;
+
+11 
+	mtŸÆNumPages
+;
+
+12 
+	mcurPagePos
+;
+
+13 *
+	mmgmtInfo
+;
+
+14 } 
+	tSM_FûeH™dÀ
+;
+
+16 * 
+	tSM_PageH™dÀ
+;
+
+22 
+öôSt‹ageM™agî
+ ();
+
+23 
+RC
+ 
+¸óãPageFûe
+ (*
+fûeName
+);
+
+24 
+RC
+ 
+›íPageFûe
+ (*
+fûeName
+, 
+SM_FûeH™dÀ
+ *
+fH™dÀ
+);
+
+25 
+RC
+ 
+˛o£PageFûe
+ (
+SM_FûeH™dÀ
+ *
+fH™dÀ
+);
+
+26 
+RC
+ 
+de°royPageFûe
+ (*
+fûeName
+);
+
+29 
+RC
+ 
+ªadBlock
+ (
+∑geNum
+, 
+SM_FûeH™dÀ
+ *
+fH™dÀ
+, 
+SM_PageH™dÀ
+ 
+memPage
+);
+
+30 
+gëBlockPos
+ (
+SM_FûeH™dÀ
+ *
+fH™dÀ
+);
+
+31 
+RC
+ 
+ªadFú°Block
+ (
+SM_FûeH™dÀ
+ *
+fH™dÀ
+, 
+SM_PageH™dÀ
+ 
+memPage
+);
+
+32 
+RC
+ 
+ªadPªviousBlock
+ (
+SM_FûeH™dÀ
+ *
+fH™dÀ
+, 
+SM_PageH™dÀ
+ 
+memPage
+);
+
+33 
+RC
+ 
+ªadCuºítBlock
+ (
+SM_FûeH™dÀ
+ *
+fH™dÀ
+, 
+SM_PageH™dÀ
+ 
+memPage
+);
+
+34 
+RC
+ 
+ªadNextBlock
+ (
+SM_FûeH™dÀ
+ *
+fH™dÀ
+, 
+SM_PageH™dÀ
+ 
+memPage
+);
+
+35 
+RC
+ 
+ªadLa°Block
+ (
+SM_FûeH™dÀ
+ *
+fH™dÀ
+, 
+SM_PageH™dÀ
+ 
+memPage
+);
+
+38 
+RC
+ 
+wrôeBlock
+ (
+∑geNum
+, 
+SM_FûeH™dÀ
+ *
+fH™dÀ
+, 
+SM_PageH™dÀ
+ 
+memPage
+);
+
+39 
+RC
+ 
+wrôeCuºítBlock
+ (
+SM_FûeH™dÀ
+ *
+fH™dÀ
+, 
+SM_PageH™dÀ
+ 
+memPage
+);
+
+40 
+RC
+ 
+≠≥ndEm±yBlock
+ (
+SM_FûeH™dÀ
+ *
+fH™dÀ
+);
+
+41 
+RC
+ 
+ísuªC≠acôy
+ (
+numbîOfPages
+, 
+SM_FûeH™dÀ
+ *
+fH™dÀ
+);
+
+	@tables.h
+
+1 #i‚de‡
+TABLES_H
+
+
+2 
+	#TABLES_H
+
+
+	)
+
+4 
+	~"dt.h
+"
+
+7 
+	eD©aTy≥
+ {
+
+8 
+	mDT_INT
+ = 0,
+
+9 
+	mDT_STRING
+ = 1,
+
+10 
+	mDT_FLOAT
+ = 2,
+
+11 
+	mDT_BOOL
+ = 3
+
+12 } 
+	tD©aTy≥
+;
+
+14 
+	sVÆue
+ {
+
+15 
+D©aTy≥
+ 
+	mdt
+;
+
+16 
+	uv
+ {
+
+17 
+	mötV
+;
+
+18 *
+	m°rögV
+;
+
+19 
+	mÊﬂtV
+;
+
+20 
+boﬁ
+ 
+	mboﬁV
+;
+
+21 } 
+	mv
+;
+
+22 } 
+	tVÆue
+;
+
+24 
+	sRID
+ {
+
+25 
+	m∑ge
+;
+
+26 
+	m¶Ÿ
+;
+
+27 } 
+	tRID
+;
+
+29 
+	sRec‹d
+
+
+31 
+RID
+ 
+	mid
+;
+
+32 *
+	md©a
+;
+
+33 } 
+	tRec‹d
+;
+
+36 
+	sSchema
+
+
+38 
+	mnumAâr
+;
+
+39 **
+	m©åNames
+;
+
+40 
+D©aTy≥
+ *
+	md©aTy≥s
+;
+
+41 *
+	mty≥Lígth
+;
+
+42 *
+	mkeyAârs
+;
+
+43 
+	mkeySize
+;
+
+44 } 
+	tSchema
+;
+
+47 
+	sRM_TabÀD©a
+
+
+49 *
+	m«me
+;
+
+50 
+Schema
+ *
+	mschema
+;
+
+51 *
+	mmgmtD©a
+;
+
+52 } 
+	tRM_TabÀD©a
+;
+
+54 
+	#MAKE_STRING_VALUE
+(
+ªsu…
+, 
+vÆue
+) \
+
+56 (
+ªsu…
+Ë(
+VÆue
+ *Ë
+	`mÆloc
+((Value)); \
+
+57 (
+ªsu…
+)->
+dt
+ = 
+DT_STRING
+; \
+
+58 (
+ªsu…
+)->
+v
+.
+°rögV
+ = (*Ë
+	`mÆloc
+(
+	`°æí
+(
+vÆue
+) + 1); \
+
+59 
+	`°r˝y
+((
+ªsu…
+)->
+v
+.
+°rögV
+, 
+vÆue
+); \
+
+60 } 0)
+
+	)
+
+63 
+	#MAKE_VALUE
+(
+ªsu…
+, 
+d©©y≥
+, 
+vÆue
+) \
+
+65 (
+ªsu…
+Ë(
+VÆue
+ *Ë
+	`mÆloc
+((Value)); \
+
+66 (
+ªsu…
+)->
+dt
+ = 
+d©©y≥
+; \
+
+67 
+d©©y≥
+) \
+
+69 
+DT_INT
+: \
+
+70 (
+ªsu…
+)->
+v
+.
+ötV
+ = 
+vÆue
+; \
+
+72 
+DT_FLOAT
+: \
+
+73 (
+ªsu…
+)->
+v
+.
+ÊﬂtV
+ = 
+vÆue
+; \
+
+75 
+DT_BOOL
+: \
+
+76 (
+ªsu…
+)->
+v
+.
+boﬁV
+ = 
+vÆue
+; \
+
+79 } 0)
+
+	)
+
+83 
+VÆue
+ *
+°rögToVÆue
+ (*
+vÆue
+);
+
+84 *
+£rülizeTabÀInfo
+(
+RM_TabÀD©a
+ *
+ªl
+);
+
+85 *
+£rülizeTabÀC⁄ã¡
+(
+RM_TabÀD©a
+ *
+ªl
+);
+
+86 *
+£rülizeSchema
+(
+Schema
+ *
+schema
+);
+
+87 *
+£rülizeRec‹d
+(
+Rec‹d
+ *
+ªc‹d
+, 
+Schema
+ *
+schema
+);
+
+88 *
+£rülizeAâr
+(
+Rec‹d
+ *
+ªc‹d
+, 
+Schema
+ *
+schema
+, 
+©åNum
+);
+
+89 *
+£rülizeVÆue
+(
+VÆue
+ *
+vÆ
+);
+
+	@test_assign3_1.c
+
+1 
+	~<°dlib.h
+>
+
+2 
+	~"dbîr‹.h
+"
+
+3 
+	~"ex¥.h
+"
+
+4 
+	~"ªc‹d_mgr.h
+"
+
+5 
+	~"èbÀs.h
+"
+
+6 
+	~"ã°_hñ≥r.h
+"
+
+9 
+	#ASSERT_EQUALS_RECORDS
+(
+_l
+,
+_r
+, 
+schema
+, 
+mesßge
+) \
+
+11 
+Rec‹d
+ *
+_lR
+ = 
+_l
+; \
+
+12 
+Rec‹d
+ *
+_rR
+ = 
+_r
+; \
+
+13 
+	`ASSERT_TRUE
+(
+	`memcmp
+(
+_lR
+->
+d©a
+,
+_rR
+->d©a,
+	`gëRec‹dSize
+(
+schema
+)Ë=0, 
+mesßge
+); \
+
+14 
+i
+; \
+
+15 
+i
+ = 0; i < 
+schema
+->
+numAâr
+; i++) \
+
+17 
+VÆue
+ *
+lVÆ
+, *
+rVÆ
+; \
+
+18 *
+lSî
+, *
+rSî
+; \
+
+19 
+	`gëAâr
+(
+_lR
+, 
+schema
+, 
+i
+, &
+lVÆ
+); \
+
+20 
+	`gëAâr
+(
+_rR
+, 
+schema
+, 
+i
+, &
+rVÆ
+); \
+
+21 
+lSî
+ = 
+	`£rülizeVÆue
+(
+lVÆ
+); \
+
+22 
+rSî
+ = 
+	`£rülizeVÆue
+(
+rVÆ
+); \
+
+23 
+	`ASSERT_EQUALS_STRING
+(
+lSî
+, 
+rSî
+, "attr same"); \
+
+24 
+	`‰ì
+(
+lVÆ
+); \
+
+25 
+	`‰ì
+(
+rVÆ
+); \
+
+26 
+	`‰ì
+(
+lSî
+); \
+
+27 
+	`‰ì
+(
+rSî
+); \
+
+29 } 0)
+
+	)
+
+31 
+	#ASSERT_EQUALS_RECORD_IN
+(
+_l
+,
+_r
+, 
+rSize
+, 
+schema
+, 
+mesßge
+) \
+
+33 
+i
+; \
+
+34 
+boﬁón
+ 
+found
+ = 
+Ál£
+; \
+
+35 
+i
+ = 0; i < 
+rSize
+; i++) \
+
+36 i‡(
+	`memcmp
+(
+_l
+->
+d©a
+,
+_r
+[
+i
+]->d©a,
+	`gëRec‹dSize
+(
+schema
+)) == 0) \
+
+37 
+found
+ = 
+åue
+; \
+
+38 
+	`ASSERT_TRUE
+(0, 
+mesßge
+); \
+
+39 } 0)
+
+	)
+
+41 
+	#OP_TRUE
+(
+À·
+, 
+right
+, 
+›
+, 
+mesßge
+) \
+
+43 
+VÆue
+ *
+ªsu…
+ = (VÆuê*Ë
+	`mÆloc
+((Value)); \
+
+44 
+	`›
+(
+À·
+, 
+right
+, 
+ªsu…
+); \
+
+45 
+boﬁ
+ 
+b
+ = 
+ªsu…
+->
+v
+.
+boﬁV
+; \
+
+46 
+	`‰ì
+(
+ªsu…
+); \
+
+47 
+	`ASSERT_TRUE
+(
+b
+,
+mesßge
+); \
+
+48 } 0)
+
+	)
+
+51 
+ã°Rec‹ds
+ ();
+
+52 
+ã°Cª©eTabÀAndIn£π
+ ();
+
+53 
+ã°Upd©eTabÀ
+ ();
+
+54 
+ã°Sˇns
+ ();
+
+55 
+ã°SˇnsTwo
+ ();
+
+56 
+ã°In£πM™yRec‹ds
+();
+
+57 
+ã°Mu…ùÀSˇns
+();
+
+60 
+	sTe°Rec‹d
+ {
+
+61 
+	ma
+;
+
+62 *
+	mb
+;
+
+63 
+	mc
+;
+
+64 } 
+	tTe°Rec‹d
+;
+
+67 
+Rec‹d
+ *
+ã°Rec‹d
+(
+Schema
+ *
+schema
+, 
+a
+, *
+b
+, 
+c
+);
+
+68 
+Schema
+ *
+ã°Schema
+ ();
+
+69 
+Rec‹d
+ *
+‰omTe°Rec‹d
+ (
+Schema
+ *
+schema
+, 
+Te°Rec‹d
+ 
+ö
+);
+
+72 *
+	gã°Name
+;
+
+76 
+	$maö
+ ()
+
+78 
+ã°Name
+ = "";
+
+80 
+	`ã°In£πM™yRec‹ds
+();
+
+81 
+	`ã°Rec‹ds
+();
+
+82 
+	`ã°Cª©eTabÀAndIn£π
+();
+
+83 
+	`ã°Upd©eTabÀ
+();
+
+84 
+	`ã°Sˇns
+();
+
+85 
+	`ã°SˇnsTwo
+();
+
+86 
+	`ã°Mu…ùÀSˇns
+();
+
+89 
+	}
+}
+
+93 
+	$ã°Rec‹ds
+ ()
+
+95 
+Te°Rec‹d
+ 
+ex≥˘ed
+[] = {
+
+98 
+Schema
+ *
+schema
+;
+
+99 
+Rec‹d
+ *
+r
+;
+
+100 
+VÆue
+ *
+vÆue
+;
+
+101 
+ã°Name
+ = "test creatingÑecordsánd manipulatingáttributes";
+
+104 
+schema
+ = 
+	`ã°Schema
+();
+
+105 
+r
+ = 
+	`‰omTe°Rec‹d
+(
+schema
+, 
+ex≥˘ed
+[0]);
+
+107 
+	`gëAâr
+(
+r
+, 
+schema
+, 0, &
+vÆue
+);
+
+108 
+	`OP_TRUE
+(
+	`°rögToVÆue
+("i1"), 
+vÆue
+, 
+vÆueEquÆs
+, "firstáttr");
+
+109 
+	`‰ìVÆ
+(
+vÆue
+);
+
+111 
+	`gëAâr
+(
+r
+, 
+schema
+, 1, &
+vÆue
+);
+
+112 
+	`OP_TRUE
+(
+	`°rögToVÆue
+("ßØa"), 
+vÆue
+, 
+vÆueEquÆs
+, "secondáttr");
+
+113 
+	`‰ìVÆ
+(
+vÆue
+);
+
+115 
+	`gëAâr
+(
+r
+, 
+schema
+, 2, &
+vÆue
+);
+
+116 
+	`OP_TRUE
+(
+	`°rögToVÆue
+("i3"), 
+vÆue
+, 
+vÆueEquÆs
+, "thirdáttr");
+
+117 
+	`‰ìVÆ
+(
+vÆue
+);
+
+120 
+	`£tAâr
+(
+r
+, 
+schema
+, 2, 
+	`°rögToVÆue
+("i4"));
+
+121 
+	`gëAâr
+(
+r
+, 
+schema
+, 2, &
+vÆue
+);
+
+122 
+	`OP_TRUE
+(
+	`°rögToVÆue
+("i4"), 
+vÆue
+, 
+vÆueEquÆs
+, "thirdáttráfter setting");
+
+123 
+	`‰ìVÆ
+(
+vÆue
+);
+
+125 
+	`‰ìRec‹d
+(
+r
+);
+
+126 
+	`TEST_DONE
+();
+
+127 
+	}
+}
+
+131 
+	$ã°Cª©eTabÀAndIn£π
+ ()
+
+133 
+RM_TabÀD©a
+ *
+èbÀ
+ = (RM_TabÀD©®*Ë
+	`mÆloc
+((RM_TableData));
+
+134 
+Te°Rec‹d
+ 
+ö£πs
+[] = {
+
+145 
+numIn£πs
+ = 9, 
+i
+;
+
+146 
+Rec‹d
+ *
+r
+;
+
+147 
+RID
+ *
+rids
+;
+
+148 
+Schema
+ *
+schema
+;
+
+149 
+ã°Name
+ = "test creatingáÇewÅableánd insertingÅuples";
+
+150 
+schema
+ = 
+	`ã°Schema
+();
+
+151 
+rids
+ = (
+RID
+ *Ë
+	`mÆloc
+((RIDË* 
+numIn£πs
+);
+
+153 
+	`TEST_CHECK
+(
+	`öôRec‹dM™agî
+(
+NULL
+));
+
+154 
+	`TEST_CHECK
+(
+	`¸óãTabÀ
+("ã°_èbÀ_r",
+schema
+));
+
+155 
+	`TEST_CHECK
+(
+	`›íTabÀ
+(
+èbÀ
+, "test_table_r"));
+
+158 
+i
+ = 0; i < 
+numIn£πs
+; i++)
+
+160 
+r
+ = 
+	`‰omTe°Rec‹d
+(
+schema
+, 
+ö£πs
+[
+i
+]);
+
+161 
+	`TEST_CHECK
+(
+	`ö£πRec‹d
+(
+èbÀ
+,
+r
+));
+
+162 
+rids
+[
+i
+] = 
+r
+->
+id
+;
+
+165 
+	`TEST_CHECK
+(
+	`˛o£TabÀ
+(
+èbÀ
+));
+
+166 
+	`TEST_CHECK
+(
+	`›íTabÀ
+(
+èbÀ
+, "test_table_r"));
+
+169 
+i
+ = 0; i < 1000; i++)
+
+171 
+pos
+ = 
+	`ønd
+(Ë% 
+numIn£πs
+;
+
+172 
+RID
+ 
+rid
+ = 
+rids
+[
+pos
+];
+
+173 
+	`TEST_CHECK
+(
+	`gëRec‹d
+(
+èbÀ
+, 
+rid
+, 
+r
+));
+
+174 
+	`ASSERT_EQUALS_RECORDS
+(
+	`‰omTe°Rec‹d
+(
+schema
+, 
+ö£πs
+[
+pos
+]), 
+r
+, schema, "compareÑecords");
+
+177 
+	`TEST_CHECK
+(
+	`˛o£TabÀ
+(
+èbÀ
+));
+
+178 
+	`TEST_CHECK
+(
+	`dñëeTabÀ
+("test_table_r"));
+
+179 
+	`TEST_CHECK
+(
+	`shutdownRec‹dM™agî
+());
+
+181 
+	`‰ì
+(
+rids
+);
+
+182 
+	`‰ì
+(
+èbÀ
+);
+
+183 
+	`TEST_DONE
+();
+
+184 
+	}
+}
+
+187 
+	$ã°Mu…ùÀSˇns
+()
+
+189 
+RM_TabÀD©a
+ *
+èbÀ
+ = (RM_TabÀD©®*Ë
+	`mÆloc
+((RM_TableData));
+
+190 
+Te°Rec‹d
+ 
+ö£πs
+[] = {
+
+202 
+numIn£πs
+ = 10, 
+i
+, 
+sˇnO√
+=0, 
+sˇnTwo
+=0;
+
+203 
+Rec‹d
+ *
+r
+;
+
+204 
+RID
+ *
+rids
+;
+
+205 
+Schema
+ *
+schema
+;
+
+206 
+ã°Name
+ = "testÑunning muliple scans ";
+
+207 
+schema
+ = 
+	`ã°Schema
+();
+
+208 
+rids
+ = (
+RID
+ *Ë
+	`mÆloc
+((RIDË* 
+numIn£πs
+);
+
+209 
+RM_SˇnH™dÀ
+ *
+sc1
+ = (RM_SˇnH™dÀ *Ë
+	`mÆloc
+((RM_ScanHandle));
+
+210 
+RM_SˇnH™dÀ
+ *
+sc2
+ = (RM_SˇnH™dÀ *Ë
+	`mÆloc
+((RM_ScanHandle));
+
+211 
+Ex¥
+ *
+£1
+, *
+À·
+, *
+right
+;
+
+212 
+rc
+,
+rc2
+;
+
+214 
+	`TEST_CHECK
+(
+	`öôRec‹dM™agî
+(
+NULL
+));
+
+215 
+	`TEST_CHECK
+(
+	`¸óãTabÀ
+("ã°_èbÀ_r",
+schema
+));
+
+216 
+	`TEST_CHECK
+(
+	`›íTabÀ
+(
+èbÀ
+, "test_table_r"));
+
+219 
+i
+ = 0; i < 
+numIn£πs
+; i++)
+
+221 
+r
+ = 
+	`‰omTe°Rec‹d
+(
+schema
+, 
+ö£πs
+[
+i
+]);
+
+222 
+	`TEST_CHECK
+(
+	`ö£πRec‹d
+(
+èbÀ
+,
+r
+));
+
+223 
+rids
+[
+i
+] = 
+r
+->
+id
+;
+
+227 
+	`MAKE_CONS
+(
+À·
+, 
+	`°rögToVÆue
+("i3"));
+
+228 
+	`MAKE_ATTRREF
+(
+right
+, 2);
+
+229 
+	`MAKE_BINOP_EXPR
+(
+£1
+, 
+À·
+, 
+right
+, 
+OP_COMP_EQUAL
+);
+
+230 
+	`¸óãRec‹d
+(&
+r
+, 
+schema
+);
+
+231 
+	`TEST_CHECK
+(
+	`°¨tSˇn
+(
+èbÀ
+, 
+sc1
+, 
+£1
+));
+
+232 
+	`TEST_CHECK
+(
+	`°¨tSˇn
+(
+èbÀ
+, 
+sc2
+, 
+£1
+));
+
+233 i‡((
+rc2
+ = 
+	`√xt
+(
+sc2
+, 
+r
+)Ë=
+RC_OK
+)
+
+234 
+sˇnTwo
+++;
+
+235 
+i
+ = 0;
+
+236 (
+rc
+ = 
+	`√xt
+(
+sc1
+, 
+r
+)Ë=
+RC_OK
+)
+
+238 
+sˇnO√
+++;
+
+239 
+i
+++;
+
+240 i‡(
+i
+ % 3 == 0)
+
+241 i‡((
+rc2
+ = 
+	`√xt
+(
+sc2
+, 
+r
+)Ë=
+RC_OK
+)
+
+242 
+sˇnTwo
+++;
+
+244 (
+rc2
+ = 
+	`√xt
+(
+sc2
+, 
+r
+)Ë=
+RC_OK
+)
+
+245 
+sˇnTwo
+++;
+
+247 
+	`ASSERT_TRUE
+(
+sˇnO√
+ =
+sˇnTwo
+, "scansÑeturned sameÇumber ofÅuples");
+
+248 i‡(
+rc
+ !
+RC_RM_NO_MORE_TUPLES
+)
+
+249 
+	`TEST_CHECK
+(
+rc
+);
+
+250 
+	`TEST_CHECK
+(
+	`˛o£Sˇn
+(
+sc1
+));
+
+251 
+	`TEST_CHECK
+(
+	`˛o£Sˇn
+(
+sc2
+));
+
+253 
+	`TEST_CHECK
+(
+	`˛o£TabÀ
+(
+èbÀ
+));
+
+254 
+	`TEST_CHECK
+(
+	`dñëeTabÀ
+("test_table_r"));
+
+255 
+	`TEST_CHECK
+(
+	`shutdownRec‹dM™agî
+());
+
+257 
+	`‰ì
+(
+rids
+);
+
+258 
+	`‰ì
+(
+èbÀ
+);
+
+259 
+	`TEST_DONE
+();
+
+260 
+	}
+}
+
+263 
+	$ã°Upd©eTabÀ
+ ()
+
+265 
+RM_TabÀD©a
+ *
+èbÀ
+ = (RM_TabÀD©®*Ë
+	`mÆloc
+((RM_TableData));
+
+266 
+Te°Rec‹d
+ 
+ö£πs
+[] = {
+
+278 
+Te°Rec‹d
+ 
+upd©es
+[] = {
+
+283 
+dñëes
+[] = {
+
+290 
+Te°Rec‹d
+ 
+föÆR
+[] = {
+
+297 
+numIn£πs
+ = 10, 
+numUpd©es
+ = 3, 
+numDñëes
+ = 5, 
+numFöÆ
+ = 5, 
+i
+;
+
+298 
+Rec‹d
+ *
+r
+;
+
+299 
+RID
+ *
+rids
+;
+
+300 
+Schema
+ *
+schema
+;
+
+301 
+ã°Name
+ = "test creatingáÇewÅableánd insert,update,deleteÅuples";
+
+302 
+schema
+ = 
+	`ã°Schema
+();
+
+303 
+rids
+ = (
+RID
+ *Ë
+	`mÆloc
+((RIDË* 
+numIn£πs
+);
+
+305 
+	`TEST_CHECK
+(
+	`öôRec‹dM™agî
+(
+NULL
+));
+
+306 
+	`TEST_CHECK
+(
+	`¸óãTabÀ
+("ã°_èbÀ_r",
+schema
+));
+
+307 
+	`TEST_CHECK
+(
+	`›íTabÀ
+(
+èbÀ
+, "test_table_r"));
+
+310 
+i
+ = 0; i < 
+numIn£πs
+; i++)
+
+312 
+r
+ = 
+	`‰omTe°Rec‹d
+(
+schema
+, 
+ö£πs
+[
+i
+]);
+
+313 
+	`TEST_CHECK
+(
+	`ö£πRec‹d
+(
+èbÀ
+,
+r
+));
+
+314 
+rids
+[
+i
+] = 
+r
+->
+id
+;
+
+318 
+i
+ = 0; i < 
+numDñëes
+; i++)
+
+320 
+	`TEST_CHECK
+(
+	`dñëeRec‹d
+(
+èbÀ
+,
+rids
+[
+dñëes
+[
+i
+]]));
+
+324 
+i
+ = 0; i < 
+numUpd©es
+; i++)
+
+326 
+r
+ = 
+	`‰omTe°Rec‹d
+(
+schema
+, 
+upd©es
+[
+i
+]);
+
+327 
+r
+->
+id
+ = 
+rids
+[
+i
+];
+
+328 
+	`TEST_CHECK
+(
+	`upd©eRec‹d
+(
+èbÀ
+,
+r
+));
+
+331 
+	`TEST_CHECK
+(
+	`˛o£TabÀ
+(
+èbÀ
+));
+
+332 
+	`TEST_CHECK
+(
+	`›íTabÀ
+(
+èbÀ
+, "test_table_r"));
+
+335 
+i
+ = 0; i < 
+numFöÆ
+; i++)
+
+337 
+RID
+ 
+rid
+ = 
+rids
+[
+i
+];
+
+338 
+	`TEST_CHECK
+(
+	`gëRec‹d
+(
+èbÀ
+, 
+rid
+, 
+r
+));
+
+339 
+	`ASSERT_EQUALS_RECORDS
+(
+	`‰omTe°Rec‹d
+(
+schema
+, 
+föÆR
+[
+i
+]), 
+r
+, schema, "compareÑecords");
+
+342 
+	`TEST_CHECK
+(
+	`˛o£TabÀ
+(
+èbÀ
+));
+
+343 
+	`TEST_CHECK
+(
+	`dñëeTabÀ
+("test_table_r"));
+
+344 
+	`TEST_CHECK
+(
+	`shutdownRec‹dM™agî
+());
+
+346 
+	`‰ì
+(
+èbÀ
+);
+
+347 
+	`TEST_DONE
+();
+
+348 
+	}
+}
+
+351 
+	$ã°In£πM™yRec‹ds
+()
+
+353 
+RM_TabÀD©a
+ *
+èbÀ
+ = (RM_TabÀD©®*Ë
+	`mÆloc
+((RM_TableData));
+
+354 
+Te°Rec‹d
+ 
+ö£πs
+[] = {
+
+366 
+Te°Rec‹d
+ 
+ªÆIn£πs
+[10000];
+
+367 
+Te°Rec‹d
+ 
+upd©es
+[] = {
+
+370 
+numIn£πs
+ = 10000, 
+i
+;
+
+371 
+øndomRec
+ = 3333;
+
+372 
+Rec‹d
+ *
+r
+;
+
+373 
+RID
+ *
+rids
+;
+
+374 
+Schema
+ *
+schema
+;
+
+375 
+ã°Name
+ = "test creatingáÇewÅableánd inserting 10000ÑecordsÅhen updatingÑecord fromÑids[3333]";
+
+376 
+schema
+ = 
+	`ã°Schema
+();
+
+377 
+rids
+ = (
+RID
+ *Ë
+	`mÆloc
+((RIDË* 
+numIn£πs
+);
+
+379 
+	`TEST_CHECK
+(
+	`öôRec‹dM™agî
+(
+NULL
+));
+
+380 
+	`TEST_CHECK
+(
+	`¸óãTabÀ
+("ã°_èbÀ_t",
+schema
+));
+
+381 
+	`TEST_CHECK
+(
+	`›íTabÀ
+(
+èbÀ
+, "test_table_t"));
+
+384 
+i
+ = 0; i < 
+numIn£πs
+; i++)
+
+386 
+ªÆIn£πs
+[
+i
+] = 
+ö£πs
+[i%10];
+
+387 
+ªÆIn£πs
+[
+i
+].
+a
+ = i;
+
+388 
+r
+ = 
+	`‰omTe°Rec‹d
+(
+schema
+, 
+ªÆIn£πs
+[
+i
+]);
+
+389 
+	`TEST_CHECK
+(
+	`ö£πRec‹d
+(
+èbÀ
+,
+r
+));
+
+390 
+rids
+[
+i
+] = 
+r
+->
+id
+;
+
+392 
+	`TEST_CHECK
+(
+	`˛o£TabÀ
+(
+èbÀ
+));
+
+393 
+	`TEST_CHECK
+(
+	`›íTabÀ
+(
+èbÀ
+, "test_table_t"));
+
+396 
+i
+ = 0; i < 
+numIn£πs
+; i++)
+
+398 
+RID
+ 
+rid
+ = 
+rids
+[
+i
+];
+
+399 
+	`TEST_CHECK
+(
+	`gëRec‹d
+(
+èbÀ
+, 
+rid
+, 
+r
+));
+
+400 
+	`ASSERT_EQUALS_RECORDS
+(
+	`‰omTe°Rec‹d
+(
+schema
+, 
+ªÆIn£πs
+[
+i
+]), 
+r
+, schema, "compareÑecords");
+
+403 
+r
+ = 
+	`‰omTe°Rec‹d
+(
+schema
+, 
+upd©es
+[0]);
+
+404 
+r
+->
+id
+ = 
+rids
+[
+øndomRec
+];
+
+405 
+	`TEST_CHECK
+(
+	`upd©eRec‹d
+(
+èbÀ
+,
+r
+));
+
+406 
+	`TEST_CHECK
+(
+	`gëRec‹d
+(
+èbÀ
+, 
+rids
+[
+øndomRec
+], 
+r
+));
+
+407 
+	`ASSERT_EQUALS_RECORDS
+(
+	`‰omTe°Rec‹d
+(
+schema
+, 
+upd©es
+[0]), 
+r
+, schema, "compareÑecords");
+
+409 
+	`TEST_CHECK
+(
+	`˛o£TabÀ
+(
+èbÀ
+));
+
+410 
+	`TEST_CHECK
+(
+	`dñëeTabÀ
+("test_table_t"));
+
+411 
+	`TEST_CHECK
+(
+	`shutdownRec‹dM™agî
+());
+
+413 
+	`‰ìRec‹d
+(
+r
+);
+
+414 
+	`‰ì
+(
+èbÀ
+);
+
+415 
+	`TEST_DONE
+();
+
+416 
+	}
+}
+
+418 
+	$ã°Sˇns
+ ()
+
+420 
+RM_TabÀD©a
+ *
+èbÀ
+ = (RM_TabÀD©®*Ë
+	`mÆloc
+((RM_TableData));
+
+421 
+Te°Rec‹d
+ 
+ö£πs
+[] = {
+
+433 
+Te°Rec‹d
+ 
+sˇnO√Resu…
+[] = {
+
+437 
+boﬁ
+ 
+foundSˇn
+[] = {
+
+438 
+FALSE
+,
+
+439 
+FALSE
+
+
+441 
+numIn£πs
+ = 10, 
+sˇnSizeO√
+ = 2, 
+i
+;
+
+442 
+Rec‹d
+ *
+r
+;
+
+443 
+RID
+ *
+rids
+;
+
+444 
+Schema
+ *
+schema
+;
+
+445 
+RM_SˇnH™dÀ
+ *
+sc
+ = (RM_SˇnH™dÀ *Ë
+	`mÆloc
+((RM_ScanHandle));
+
+446 
+Ex¥
+ *
+£l
+, *
+À·
+, *
+right
+;
+
+447 
+rc
+;
+
+449 
+ã°Name
+ = "test creatingáÇewÅableánd insertingÅuples";
+
+450 
+schema
+ = 
+	`ã°Schema
+();
+
+451 
+rids
+ = (
+RID
+ *Ë
+	`mÆloc
+((RIDË* 
+numIn£πs
+);
+
+453 
+	`TEST_CHECK
+(
+	`öôRec‹dM™agî
+(
+NULL
+));
+
+454 
+	`TEST_CHECK
+(
+	`¸óãTabÀ
+("ã°_èbÀ_r",
+schema
+));
+
+455 
+	`TEST_CHECK
+(
+	`›íTabÀ
+(
+èbÀ
+, "test_table_r"));
+
+458 
+i
+ = 0; i < 
+numIn£πs
+; i++)
+
+460 
+r
+ = 
+	`‰omTe°Rec‹d
+(
+schema
+, 
+ö£πs
+[
+i
+]);
+
+461 
+	`TEST_CHECK
+(
+	`ö£πRec‹d
+(
+èbÀ
+,
+r
+));
+
+462 
+rids
+[
+i
+] = 
+r
+->
+id
+;
+
+465 
+	`TEST_CHECK
+(
+	`˛o£TabÀ
+(
+èbÀ
+));
+
+466 
+	`TEST_CHECK
+(
+	`›íTabÀ
+(
+èbÀ
+, "test_table_r"));
+
+469 
+	`MAKE_CONS
+(
+À·
+, 
+	`°rögToVÆue
+("i1"));
+
+470 
+	`MAKE_ATTRREF
+(
+right
+, 2);
+
+471 
+	`MAKE_BINOP_EXPR
+(
+£l
+, 
+À·
+, 
+right
+, 
+OP_COMP_EQUAL
+);
+
+473 
+	`TEST_CHECK
+(
+	`°¨tSˇn
+(
+èbÀ
+, 
+sc
+, 
+£l
+));
+
+474 (
+rc
+ = 
+	`√xt
+(
+sc
+, 
+r
+)Ë=
+RC_OK
+)
+
+476 
+i
+ = 0; i < 
+sˇnSizeO√
+; i++)
+
+478 i‡(
+	`memcmp
+(
+	`‰omTe°Rec‹d
+(
+schema
+, 
+sˇnO√Resu…
+[
+i
+])->
+d©a
+,
+r
+->d©a,
+	`gëRec‹dSize
+(schema)) == 0)
+
+479 
+foundSˇn
+[
+i
+] = 
+TRUE
+;
+
+482 i‡(
+rc
+ !
+RC_RM_NO_MORE_TUPLES
+)
+
+483 
+	`TEST_CHECK
+(
+rc
+);
+
+484 
+	`TEST_CHECK
+(
+	`˛o£Sˇn
+(
+sc
+));
+
+485 
+i
+ = 0; i < 
+sˇnSizeO√
+; i++)
+
+486 
+	`ASSERT_TRUE
+(
+foundSˇn
+[
+i
+], "check for scanÑesult");
+
+489 
+	`TEST_CHECK
+(
+	`˛o£TabÀ
+(
+èbÀ
+));
+
+490 
+	`TEST_CHECK
+(
+	`dñëeTabÀ
+("test_table_r"));
+
+491 
+	`TEST_CHECK
+(
+	`shutdownRec‹dM™agî
+());
+
+493 
+	`‰ì
+(
+èbÀ
+);
+
+494 
+	`‰ì
+(
+sc
+);
+
+495 
+	`‰ìEx¥
+(
+£l
+);
+
+496 
+	`TEST_DONE
+();
+
+497 
+	}
+}
+
+500 
+	$ã°SˇnsTwo
+ ()
+
+502 
+RM_TabÀD©a
+ *
+èbÀ
+ = (RM_TabÀD©®*Ë
+	`mÆloc
+((RM_TableData));
+
+503 
+Te°Rec‹d
+ 
+ö£πs
+[] = {
+
+515 
+boﬁ
+ 
+foundSˇn
+[] = {
+
+516 
+FALSE
+,
+
+517 
+FALSE
+,
+
+518 
+FALSE
+,
+
+519 
+FALSE
+,
+
+520 
+FALSE
+,
+
+521 
+FALSE
+,
+
+522 
+FALSE
+,
+
+523 
+FALSE
+,
+
+524 
+FALSE
+,
+
+525 
+FALSE
+
+
+527 
+numIn£πs
+ = 10, 
+i
+;
+
+528 
+Rec‹d
+ *
+r
+;
+
+529 
+RID
+ *
+rids
+;
+
+530 
+Schema
+ *
+schema
+;
+
+531 
+RM_SˇnH™dÀ
+ *
+sc
+ = (RM_SˇnH™dÀ *Ë
+	`mÆloc
+((RM_ScanHandle));
+
+532 
+Ex¥
+ *
+£l
+, *
+À·
+, *
+right
+, *
+fú°
+, *
+£
+;
+
+533 
+rc
+;
+
+535 
+ã°Name
+ = "test creatingáÇewÅableánd insertingÅuples";
+
+536 
+schema
+ = 
+	`ã°Schema
+();
+
+537 
+rids
+ = (
+RID
+ *Ë
+	`mÆloc
+((RIDË* 
+numIn£πs
+);
+
+539 
+	`TEST_CHECK
+(
+	`öôRec‹dM™agî
+(
+NULL
+));
+
+540 
+	`TEST_CHECK
+(
+	`¸óãTabÀ
+("ã°_èbÀ_r",
+schema
+));
+
+541 
+	`TEST_CHECK
+(
+	`›íTabÀ
+(
+èbÀ
+, "test_table_r"));
+
+544 
+i
+ = 0; i < 
+numIn£πs
+; i++)
+
+546 
+r
+ = 
+	`‰omTe°Rec‹d
+(
+schema
+, 
+ö£πs
+[
+i
+]);
+
+547 
+	`TEST_CHECK
+(
+	`ö£πRec‹d
+(
+èbÀ
+,
+r
+));
+
+548 
+rids
+[
+i
+] = 
+r
+->
+id
+;
+
+551 
+	`TEST_CHECK
+(
+	`˛o£TabÀ
+(
+èbÀ
+));
+
+552 
+	`TEST_CHECK
+(
+	`›íTabÀ
+(
+èbÀ
+, "test_table_r"));
+
+555 
+	`MAKE_CONS
+(
+À·
+, 
+	`°rögToVÆue
+("i2"));
+
+556 
+	`MAKE_ATTRREF
+(
+right
+, 0);
+
+557 
+	`MAKE_BINOP_EXPR
+(
+£l
+, 
+À·
+, 
+right
+, 
+OP_COMP_EQUAL
+);
+
+558 
+	`¸óãRec‹d
+(&
+r
+, 
+schema
+);
+
+559 
+	`TEST_CHECK
+(
+	`°¨tSˇn
+(
+èbÀ
+, 
+sc
+, 
+£l
+));
+
+560 (
+rc
+ = 
+	`√xt
+(
+sc
+, 
+r
+)Ë=
+RC_OK
+)
+
+562 
+	`ASSERT_EQUALS_RECORDS
+(
+	`‰omTe°Rec‹d
+(
+schema
+, 
+ö£πs
+[1]), 
+r
+, schema, "compareÑecords");
+
+564 i‡(
+rc
+ !
+RC_RM_NO_MORE_TUPLES
+)
+
+565 
+	`TEST_CHECK
+(
+rc
+);
+
+566 
+	`TEST_CHECK
+(
+	`˛o£Sˇn
+(
+sc
+));
+
+569 
+	`MAKE_CONS
+(
+À·
+, 
+	`°rögToVÆue
+("sffff"));
+
+570 
+	`MAKE_ATTRREF
+(
+right
+, 1);
+
+571 
+	`MAKE_BINOP_EXPR
+(
+£l
+, 
+À·
+, 
+right
+, 
+OP_COMP_EQUAL
+);
+
+572 
+	`¸óãRec‹d
+(&
+r
+, 
+schema
+);
+
+573 
+	`TEST_CHECK
+(
+	`°¨tSˇn
+(
+èbÀ
+, 
+sc
+, 
+£l
+));
+
+574 (
+rc
+ = 
+	`√xt
+(
+sc
+, 
+r
+)Ë=
+RC_OK
+)
+
+576 
+	`ASSERT_EQUALS_RECORDS
+(
+	`‰omTe°Rec‹d
+(
+schema
+, 
+ö£πs
+[5]), 
+r
+, schema, "compareÑecords");
+
+577 
+	`£rülizeRec‹d
+(
+r
+, 
+schema
+);
+
+579 i‡(
+rc
+ !
+RC_RM_NO_MORE_TUPLES
+)
+
+580 
+	`TEST_CHECK
+(
+rc
+);
+
+581 
+	`TEST_CHECK
+(
+	`˛o£Sˇn
+(
+sc
+));
+
+584 
+	`MAKE_CONS
+(
+À·
+, 
+	`°rögToVÆue
+("i4"));
+
+585 
+	`MAKE_ATTRREF
+(
+right
+, 2);
+
+586 
+	`MAKE_BINOP_EXPR
+(
+fú°
+, 
+right
+, 
+À·
+, 
+OP_COMP_SMALLER
+);
+
+587 
+	`MAKE_UNOP_EXPR
+(
+£
+, 
+fú°
+, 
+OP_BOOL_NOT
+);
+
+588 
+	`TEST_CHECK
+(
+	`°¨tSˇn
+(
+èbÀ
+, 
+sc
+, 
+£
+));
+
+589 (
+rc
+ = 
+	`√xt
+(
+sc
+, 
+r
+)Ë=
+RC_OK
+)
+
+591 
+	`£rülizeRec‹d
+(
+r
+, 
+schema
+);
+
+592 
+i
+ = 0; i < 
+numIn£πs
+; i++)
+
+594 i‡(
+	`memcmp
+(
+	`‰omTe°Rec‹d
+(
+schema
+, 
+ö£πs
+[
+i
+])->
+d©a
+,
+r
+->d©a,
+	`gëRec‹dSize
+(schema)) == 0)
+
+595 
+foundSˇn
+[
+i
+] = 
+TRUE
+;
+
+598 i‡(
+rc
+ !
+RC_RM_NO_MORE_TUPLES
+)
+
+599 
+	`TEST_CHECK
+(
+rc
+);
+
+600 
+	`TEST_CHECK
+(
+	`˛o£Sˇn
+(
+sc
+));
+
+602 
+	`ASSERT_TRUE
+(!
+foundSˇn
+[0], "not greaterÅhan four");
+
+603 
+	`ASSERT_TRUE
+(
+foundSˇn
+[4], "greaterÅhan four");
+
+604 
+	`ASSERT_TRUE
+(
+foundSˇn
+[9], "greaterÅhan four");
+
+607 
+	`TEST_CHECK
+(
+	`˛o£TabÀ
+(
+èbÀ
+));
+
+608 
+	`TEST_CHECK
+(
+	`dñëeTabÀ
+("test_table_r"));
+
+609 
+	`TEST_CHECK
+(
+	`shutdownRec‹dM™agî
+());
+
+611 
+	`‰ìRec‹d
+(
+r
+);
+
+612 
+	`‰ì
+(
+èbÀ
+);
+
+613 
+	`‰ì
+(
+sc
+);
+
+614 
+	`‰ìEx¥
+(
+£l
+);
+
+615 
+	`TEST_DONE
+();
+
+616 
+	}
+}
+
+619 
+Schema
+ *
+
+620 
+	$ã°Schema
+ ()
+
+622 
+Schema
+ *
+ªsu…
+;
+
+623 *
+«mes
+[] = { "a", "b", "c" };
+
+624 
+D©aTy≥
+ 
+dt
+[] = { 
+DT_INT
+, 
+DT_STRING
+, DT_INT };
+
+625 
+sizes
+[] = { 0, 4, 0 };
+
+626 
+keys
+[] = {0};
+
+627 
+i
+;
+
+628 **
+˝Names
+ = (**Ë
+	`mÆloc
+((*) * 3);
+
+629 
+D©aTy≥
+ *
+˝Dt
+ = (D©aTy≥ *Ë
+	`mÆloc
+((DataType) * 3);
+
+630 *
+˝Sizes
+ = (*Ë
+	`mÆloc
+(() * 3);
+
+631 *
+˝Keys
+ = (*Ë
+	`mÆloc
+(());
+
+633 
+i
+ = 0; i < 3; i++)
+
+635 
+˝Names
+[
+i
+] = (*Ë
+	`mÆloc
+(2);
+
+636 
+	`°r˝y
+(
+˝Names
+[
+i
+], 
+«mes
+[i]);
+
+638 
+	`mem˝y
+(
+˝Dt
+, 
+dt
+, (
+D©aTy≥
+) * 3);
+
+639 
+	`mem˝y
+(
+˝Sizes
+, 
+sizes
+, () * 3);
+
+640 
+	`mem˝y
+(
+˝Keys
+, 
+keys
+, ());
+
+642 
+ªsu…
+ = 
+	`¸óãSchema
+(3, 
+˝Names
+, 
+˝Dt
+, 
+˝Sizes
+, 1, 
+˝Keys
+);
+
+644  
+ªsu…
+;
+
+645 
+	}
+}
+
+647 
+Rec‹d
+ *
+
+648 
+	$‰omTe°Rec‹d
+ (
+Schema
+ *
+schema
+, 
+Te°Rec‹d
+ 
+ö
+)
+
+650  
+	`ã°Rec‹d
+(
+schema
+, 
+ö
+.
+a
+, in.
+b
+, in.
+c
+);
+
+651 
+	}
+}
+
+653 
+Rec‹d
+ *
+
+654 
+	$ã°Rec‹d
+(
+Schema
+ *
+schema
+, 
+a
+, *
+b
+, 
+c
+)
+
+656 
+Rec‹d
+ *
+ªsu…
+;
+
+657 
+VÆue
+ *
+vÆue
+;
+
+659 
+	`TEST_CHECK
+(
+	`¸óãRec‹d
+(&
+ªsu…
+, 
+schema
+));
+
+661 
+	`MAKE_VALUE
+(
+vÆue
+, 
+DT_INT
+, 
+a
+);
+
+662 
+	`TEST_CHECK
+(
+	`£tAâr
+(
+ªsu…
+, 
+schema
+, 0, 
+vÆue
+));
+
+663 
+	`‰ìVÆ
+(
+vÆue
+);
+
+665 
+	`MAKE_STRING_VALUE
+(
+vÆue
+, 
+b
+);
+
+666 
+	`TEST_CHECK
+(
+	`£tAâr
+(
+ªsu…
+, 
+schema
+, 1, 
+vÆue
+));
+
+667 
+	`‰ìVÆ
+(
+vÆue
+);
+
+669 
+	`MAKE_VALUE
+(
+vÆue
+, 
+DT_INT
+, 
+c
+);
+
+670 
+	`TEST_CHECK
+(
+	`£tAâr
+(
+ªsu…
+, 
+schema
+, 2, 
+vÆue
+));
+
+671 
+	`‰ìVÆ
+(
+vÆue
+);
+
+673  
+ªsu…
+;
+
+674 
+	}
+}
+
+	@test_expr.c
+
+1 
+	~"dbîr‹.h
+"
+
+2 
+	~"ex¥.h
+"
+
+3 
+	~"ªc‹d_mgr.h
+"
+
+4 
+	~"èbÀs.h
+"
+
+5 
+	~"ã°_hñ≥r.h
+"
+
+8 
+	#OP_TRUE
+(
+À·
+, 
+right
+, 
+›
+, 
+mesßge
+) \
+
+10 
+VÆue
+ *
+ªsu…
+; \
+
+11 
+	`MAKE_VALUE
+(
+ªsu…
+, 
+DT_INT
+, -1); \
+
+12 
+	`›
+(
+À·
+, 
+right
+, 
+ªsu…
+); \
+
+13 
+boﬁ
+ 
+b
+ = 
+ªsu…
+->
+v
+.
+boﬁV
+; \
+
+14 
+	`‰ì
+(
+ªsu…
+); \
+
+15 
+	`ASSERT_TRUE
+(
+b
+,
+mesßge
+); \
+
+16 } 0)
+
+	)
+
+18 
+	#OP_FALSE
+(
+À·
+, 
+right
+, 
+›
+, 
+mesßge
+) \
+
+20 
+VÆue
+ *
+ªsu…
+; \
+
+21 
+	`MAKE_VALUE
+(
+ªsu…
+, 
+DT_INT
+, -1); \
+
+22 
+	`›
+(
+À·
+, 
+right
+, 
+ªsu…
+); \
+
+23 
+boﬁ
+ 
+b
+ = 
+ªsu…
+->
+v
+.
+boﬁV
+; \
+
+24 
+	`‰ì
+(
+ªsu…
+); \
+
+25 
+	`ASSERT_TRUE
+(!
+b
+,
+mesßge
+); \
+
+26 } 0)
+
+	)
+
+29 
+ã°VÆueSîülize
+ ();
+
+30 
+ã°O≥øt‹s
+ ();
+
+31 
+ã°Ex¥essi⁄s
+ ();
+
+33 *
+	gã°Name
+;
+
+37 
+	$maö
+ ()
+
+39 
+ã°Name
+ = "";
+
+41 
+	`ã°VÆueSîülize
+();
+
+42 
+	`ã°O≥øt‹s
+();
+
+43 
+	`ã°Ex¥essi⁄s
+();
+
+46 
+	}
+}
+
+50 
+	$ã°VÆueSîülize
+ ()
+
+52 
+ã°Name
+ = "test value serializationánd deserialization";
+
+54 
+	`ASSERT_EQUALS_STRING
+(
+	`£rülizeVÆue
+(
+	`°rögToVÆue
+("i10")), "10", "create Value 10");
+
+55 
+	`ASSERT_EQUALS_STRING
+(
+	`£rülizeVÆue
+(
+	`°rögToVÆue
+("f5.3")), "5.300000", "create Value 5.3");
+
+56 
+	`ASSERT_EQUALS_STRING
+(
+	`£rülizeVÆue
+(
+	`°rögToVÆue
+("sHello World")), "Hello World", "create Value Hello World");
+
+57 
+	`ASSERT_EQUALS_STRING
+(
+	`£rülizeVÆue
+(
+	`°rögToVÆue
+("bt")), "true", "create ValueÅrue");
+
+58 
+	`ASSERT_EQUALS_STRING
+(
+	`£rülizeVÆue
+(
+	`°rögToVÆue
+("btrue")), "true", "create ValueÅrue");
+
+60 
+	`TEST_DONE
+();
+
+61 
+	}
+}
+
+65 
+	$ã°O≥øt‹s
+ ()
+
+67 
+VÆue
+ *
+ªsu…
+;
+
+68 
+ã°Name
+ = "test value comparisonánd boolean operators";
+
+69 
+	`MAKE_VALUE
+(
+ªsu…
+, 
+DT_INT
+, 0);
+
+72 
+	`OP_TRUE
+(
+	`°rögToVÆue
+("i10"),°rögToVÆue("i10"), 
+vÆueEquÆs
+, "10 = 10");
+
+73 
+	`OP_FALSE
+(
+	`°rögToVÆue
+("i9"),°rögToVÆue("i10"), 
+vÆueEquÆs
+, "9 != 10");
+
+74 
+	`OP_TRUE
+(
+	`°rögToVÆue
+("sHñlÿW‹ld"),°rögToVÆue("sHñlÿW‹ld"), 
+vÆueEquÆs
+, "Hello World = Hello World");
+
+75 
+	`OP_FALSE
+(
+	`°rögToVÆue
+("sHñlÿW‹l"),°rögToVÆue("sHñlÿW‹ld"), 
+vÆueEquÆs
+, "Hello Worl != Hello World");
+
+76 
+	`OP_FALSE
+(
+	`°rögToVÆue
+("sHñlÿW‹l"),°rögToVÆue("sHñlÿW‹"), 
+vÆueEquÆs
+, "Hello Worl != Hello Wor");
+
+79 
+	`OP_TRUE
+(
+	`°rögToVÆue
+("i3"),°rögToVÆue("i10"), 
+vÆueSmÆÀr
+, "3 < 10");
+
+80 
+	`OP_TRUE
+(
+	`°rögToVÆue
+("f5.0"),°rögToVÆue("f6.5"), 
+vÆueSmÆÀr
+, "5.0 < 6.5");
+
+83 
+	`OP_TRUE
+(
+	`°rögToVÆue
+("bt"),°rögToVÆue("bt"), 
+boﬁAnd
+, "t ANDÅ =Å");
+
+84 
+	`OP_FALSE
+(
+	`°rögToVÆue
+("bt"),°rögToVÆue("bf"), 
+boﬁAnd
+, "t AND f = f");
+
+86 
+	`OP_TRUE
+(
+	`°rögToVÆue
+("bt"),°rögToVÆue("bf"), 
+boﬁOr
+, "t OR f =Å");
+
+87 
+	`OP_FALSE
+(
+	`°rögToVÆue
+("bf"),°rögToVÆue("bf"), 
+boﬁOr
+, "f OR f = f");
+
+89 
+	`TEST_CHECK
+(
+	`boﬁNŸ
+(
+	`°rögToVÆue
+("bf"), 
+ªsu…
+));
+
+90 
+	`ASSERT_TRUE
+(
+ªsu…
+->
+v
+.
+boﬁV
+, "!f =Å");
+
+92 
+	`TEST_DONE
+();
+
+93 
+	}
+}
+
+97 
+	$ã°Ex¥essi⁄s
+ ()
+
+99 
+Ex¥
+ *
+›
+, *
+l
+, *
+r
+;
+
+100 
+VÆue
+ *
+ªs
+;
+
+101 
+ã°Name
+ = "test complexÉxpressions";
+
+103 
+	`MAKE_CONS
+(
+l
+, 
+	`°rögToVÆue
+("i10"));
+
+104 
+	`evÆEx¥
+(
+NULL
+, NULL, 
+l
+, &
+ªs
+);
+
+105 
+	`OP_TRUE
+(
+	`°rögToVÆue
+("i10"), 
+ªs
+, 
+vÆueEquÆs
+, "Const 10");
+
+107 
+	`MAKE_CONS
+(
+r
+, 
+	`°rögToVÆue
+("i20"));
+
+108 
+	`evÆEx¥
+(
+NULL
+, NULL, 
+r
+, &
+ªs
+);
+
+109 
+	`OP_TRUE
+(
+	`°rögToVÆue
+("i20"), 
+ªs
+, 
+vÆueEquÆs
+, "Const 20");
+
+111 
+	`MAKE_BINOP_EXPR
+(
+›
+, 
+l
+, 
+r
+, 
+OP_COMP_SMALLER
+);
+
+112 
+	`evÆEx¥
+(
+NULL
+, NULL, 
+›
+, &
+ªs
+);
+
+113 
+	`OP_TRUE
+(
+	`°rögToVÆue
+("bt"), 
+ªs
+, 
+vÆueEquÆs
+, "Const 10 < Const 20");
+
+115 
+	`MAKE_CONS
+(
+l
+, 
+	`°rögToVÆue
+("bt"));
+
+116 
+	`evÆEx¥
+(
+NULL
+, NULL, 
+l
+, &
+ªs
+);
+
+117 
+	`OP_TRUE
+(
+	`°rögToVÆue
+("bt"), 
+ªs
+, 
+vÆueEquÆs
+, "ConstÅrue");
+
+119 
+r
+ = 
+›
+;
+
+120 
+	`MAKE_BINOP_EXPR
+(
+›
+, 
+r
+, 
+l
+, 
+OP_BOOL_AND
+);
+
+121 
+	`evÆEx¥
+(
+NULL
+, NULL, 
+›
+, &
+ªs
+);
+
+122 
+	`OP_TRUE
+(
+	`°rögToVÆue
+("bt"), 
+ªs
+, 
+vÆueEquÆs
+, "(Const 10 < Const 20) ANDÅrue");
+
+124 
+	`TEST_DONE
+();
+
+125 
+	}
+}
+
+	@test_helper.h
+
+1 #i‚de‡
+TEST_HELPER_H
+
+
+2 
+	#TEST_HELPER_H
+
+
+	)
+
+4 
+	~<°dio.h
+>
+
+5 
+	~<°dlib.h
+>
+
+6 
+	~<°rög.h
+>
+
+7 
+	~<time.h
+>
+
+10 *
+ã°Name
+;
+
+13 
+	#TEST_INFO
+ 
+__FILE__
+, 
+ã°Name
+, 
+__LINE__
+, 
+__TIME__
+
+
+	)
+
+16 
+	#TEST_CHECK
+(
+code
+) \
+
+18 
+rc_öã∫Æ
+ = (
+code
+); \
+
+19 i‡(
+rc_öã∫Æ
+ !
+RC_OK
+) \
+
+21 *
+mesßge
+ = 
+	`îr‹Mesßge
+(
+rc_öã∫Æ
+); \
+
+22 
+	`¥ötf
+("[%s-%s-L%i-%s] FAILED: O≥øti⁄Ñëu∫edÉº‹: %s\n",
+TEST_INFO
+, 
+mesßge
+); \
+
+23 
+	`‰ì
+(
+mesßge
+); \
+
+24 
+	`exô
+(1); \
+
+26 } 0);
+
+	)
+
+29 
+	#ASSERT_EQUALS_STRING
+(
+ex≥˘ed
+,
+ªÆ
+,
+mesßge
+) \
+
+31 i‡(
+	`°rcmp
+((
+ex≥˘ed
+),(
+ªÆ
+)) != 0) \
+
+33 
+	`¥ötf
+("[%s-%s-L%i-%s] FAILED:Éx≥˘ed <%s> buàwa†<%s>: %s\n",
+TEST_INFO
+, 
+ex≥˘ed
+, 
+ªÆ
+, 
+mesßge
+); \
+
+34 
+	`exô
+(1); \
+
+36 
+	`¥ötf
+("[%s-%s-L%i-%s] OK:Éx≥˘ed <%s>ánd wa†<%s>: %s\n",
+TEST_INFO
+, 
+ex≥˘ed
+, 
+ªÆ
+, 
+mesßge
+); \
+
+37 } 0)
+
+	)
+
+40 
+	#ASSERT_EQUALS_INT
+(
+ex≥˘ed
+,
+ªÆ
+,
+mesßge
+) \
+
+42 i‡((
+ex≥˘ed
+Ë!(
+ªÆ
+)) \
+
+44 
+	`¥ötf
+("[%s-%s-L%i-%s] FAILED:Éx≥˘ed <%i> buàwa†<%i>: %s\n",
+TEST_INFO
+, 
+ex≥˘ed
+, 
+ªÆ
+, 
+mesßge
+); \
+
+45 
+	`exô
+(1); \
+
+47 
+	`¥ötf
+("[%s-%s-L%i-%s] OK:Éx≥˘ed <%i>ánd wa†<%i>: %s\n",
+TEST_INFO
+, 
+ex≥˘ed
+, 
+ªÆ
+, 
+mesßge
+); \
+
+48 } 0)
+
+	)
+
+51 
+	#ASSERT_TRUE
+(
+ªÆ
+,
+mesßge
+) \
+
+53 i‡(!(
+ªÆ
+)) \
+
+55 
+	`¥ötf
+("[%s-%s-L%i-%s] FAILED:Éx≥˘edÅrue: %s\n",
+TEST_INFO
+, 
+mesßge
+); \
+
+56 
+	`exô
+(1); \
+
+58 
+	`¥ötf
+("[%s-%s-L%i-%s] OK:Éx≥˘edÅrue: %s\n",
+TEST_INFO
+, 
+mesßge
+); \
+
+59 } 0)
+
+	)
+
+63 
+	#ASSERT_ERROR
+(
+ex≥˘ed
+,
+mesßge
+) \
+
+65 
+ªsu…
+ = (
+ex≥˘ed
+); \
+
+66 i‡(
+ªsu…
+ =(
+RC_OK
+)) \
+
+68 
+	`¥ötf
+("[%s-%s-L%i-%s] FAILED:Éx≥˘edá¿îr‹: %s\n",
+TEST_INFO
+, 
+mesßge
+); \
+
+69 
+	`exô
+(1); \
+
+71 
+	`¥ötf
+("[%s-%s-L%i-%s] OK:Éx≥˘edá¿îr‹ánd wa†RC <%i>: %s\n",
+TEST_INFO
+, 
+ªsu…
+ , 
+mesßge
+); \
+
+72 } 0)
+
+	)
+
+75 
+	#TEST_DONE
+() \
+
+77 
+	`¥ötf
+("[%s-%s-L%i-%s] OK: föishedÅe°\n\n",
+TEST_INFO
+); \
+
+78 } 0)
+
+	)
+
+	@
+1
+.
+0
+15
+183
+buffer_mgr.h
+buffer_mgr_stat.c
+buffer_mgr_stat.h
+dberror.c
+dberror.h
+dt.h
+expr.c
+expr.h
+record_mgr.h
+rm_serializer.c
+storage_mgr.h
+tables.h
+test_assign3_1.c
+test_expr.c
+test_helper.h

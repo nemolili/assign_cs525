@@ -1,4 +1,4 @@
-cscope 15 $HOME/development/Assignment/assign1               0000006951
+cscope 15 $HOME/development/Assignment/assign1               0000010073
 	@dberror.c
 
 1 
@@ -322,6 +322,650 @@ mes§ge
 54 } 0);
 
 	)
+
+	@storage_mgr.c
+
+1 
+	~<¡dio.h
+>
+
+2 
+	~<¡dlib.h
+>
+
+3 
+	~"db”rÜ.h
+"
+
+4 
+	~"¡Üage_mgr.h
+"
+
+9 
+	$š™StÜageMªag”
+()
+
+11 
+	}
+}
+
+12 
+RC
+ 
+	$ü—‹PageFže
+(*
+fžeName
+)
+
+14 
+FILE
+* 
+fc
+ = 
+	`fÝ’
+(
+fžeName
+,"w+");
+
+15 * 
+cÚ‹Á
+ = (*è
+	`m®loc
+(
+PAGE_SIZE
+);
+
+16 
+i
+=0; i<
+PAGE_SIZE
+;i++){
+
+17 
+cÚ‹Á
+[
+i
+] = "\0";
+
+19 
+	`fwr™e
+(
+cÚ‹Á
+,(),
+PAGE_SIZE
+,
+fc
+);
+
+20 
+	`fþo£
+(
+fc
+);
+
+21  
+RC_OK
+;
+
+22 
+	}
+}
+
+24 
+RC
+ 
+	$Ý’PageFže
+(*
+fžeName
+, 
+SM_FžeHªdË
+ *
+fHªdË
+)
+
+26 if(
+fžeName
+ =ð
+NULL
+)
+
+28  
+RC_FILE_NOT_FOUND
+;
+
+32 
+FILE
+* 
+fo
+ = 
+	`fÝ’
+(
+fžeName
+,"r+");
+
+33 
+fHªdË
+->
+fžeName
+ = fileName;
+
+34 
+fHªdË
+->
+curPagePos
+ = 0;
+
+35 
+fHªdË
+->
+tÙ®NumPages
+ = (
+fo
+)/
+PAGE_SIZE
+ + 1;
+
+37 
+	`fþo£
+(
+fo
+);
+
+38  
+RC_OK
+;
+
+40 
+	}
+}
+
+42 
+RC
+ 
+	$þo£PageFže
+(
+SM_FžeHªdË
+ *
+fHªdË
+)
+
+44 
+	`ä“
+(
+fHªdË
+->
+mgmtInfo
+);
+
+45 
+fHªdË
+->
+mgmtInfo
+ = 
+NULL
+;
+
+46  
+RC_OK
+;
+
+47 
+	}
+}
+
+49 
+RC
+ 
+	$de¡royPageFže
+(*
+fžeName
+)
+
+51 
+	`»move
+(
+fžeName
+);
+
+52  
+RC_OK
+;
+
+53 
+	}
+}
+
+55 
+RC
+ 
+	$»adBlock
+(
+·geNum
+, 
+SM_FžeHªdË
+ *
+fHªdË
+, 
+SM_PageHªdË
+ 
+memPage
+)
+
+57 
+FILE
+* 
+fo
+ = 
+	`fÝ’
+(
+fHªdË
+->
+fžeName
+,"r+");
+
+58 if(
+·geNum
+ > 
+fHªdË
+->
+tÙ®NumPages
+)
+
+60  
+RC_READ_NON_EXISTING_PAGE
+;
+
+64 if(
+	`f£ek
+(
+fo
+,(
+·geNum
+-1)*
+PAGE_SIZE
+,
+SEEK_SET
+)==0)
+
+66 
+	`ä—d
+(
+memPage
+,(),
+PAGE_SIZE
+,
+fo
+);
+
+67  
+RC_OK
+;
+
+70 
+	}
+}
+
+72 
+	$g‘BlockPos
+(
+SM_FžeHªdË
+ *
+fHªdË
+)
+
+74  
+fHªdË
+->
+curPagePos
+;
+
+75 
+	}
+}
+
+77 
+RC
+ 
+	$»adFœ¡Block
+(
+SM_FžeHªdË
+ *
+fHªdË
+, 
+SM_PageHªdË
+ 
+memPage
+)
+
+79 
+	`»adBlock
+(1,
+fHªdË
+,
+memPage
+);
+
+80 
+	}
+}
+
+82 
+RC
+ 
+	$»adP»viousBlock
+(
+SM_FžeHªdË
+ *
+fHªdË
+, 
+SM_PageHªdË
+ 
+memPage
+)
+
+84 
+	`»adBlock
+((
+fHªdË
+->
+curPagePos
+-1),fHªdË,
+memPage
+);
+
+85 
+	}
+}
+
+87 
+RC
+ 
+	$»adCu¼’tBlock
+(
+SM_FžeHªdË
+ *
+fHªdË
+, 
+SM_PageHªdË
+ 
+memPage
+)
+
+89 
+	`»adBlock
+((
+fHªdË
+->
+curPagePos
+),fHªdË,
+memPage
+);
+
+90 
+	}
+}
+
+92 
+RC
+ 
+	$»adNextBlock
+(
+SM_FžeHªdË
+ *
+fHªdË
+, 
+SM_PageHªdË
+ 
+memPage
+)
+
+94 
+	`»adBlock
+((
+fHªdË
+->
+curPagePos
++1),fHªdË,
+memPage
+);
+
+95 
+	}
+}
+
+97 
+RC
+ 
+	$»adLa¡Block
+(
+SM_FžeHªdË
+ *
+fHªdË
+, 
+SM_PageHªdË
+ 
+memPage
+)
+
+99 
+	`»adBlock
+((
+fHªdË
+->
+tÙ®NumPages
+),fHªdË,
+memPage
+);
+
+100 
+	}
+}
+
+102 
+RC
+ 
+	$wr™eBlock
+(
+·geNum
+, 
+SM_FžeHªdË
+ *
+fHªdË
+, 
+SM_PageHªdË
+ 
+memPage
+)
+
+104 
+FILE
+* 
+fo
+ = 
+	`fÝ’
+(
+fHªdË
+->
+fžeName
+,"a+");
+
+105 if(
+·geNum
+ > 
+fHªdË
+->
+tÙ®NumPages
+)
+
+107  
+RC_READ_NON_EXISTING_PAGE
+;
+
+111 if(
+	`f£ek
+(
+fo
+,(
+·geNum
+-1)*
+PAGE_SIZE
+,
+SEEK_SET
+)==0)
+
+113 
+	`fwr™e
+(
+memPage
+,(),
+PAGE_SIZE
+,
+fo
+);
+
+114  
+RC_OK
+;
+
+117 
+	}
+}
+
+119 
+RC
+ 
+	$wr™eCu¼’tBlock
+(
+SM_FžeHªdË
+ *
+fHªdË
+, 
+SM_PageHªdË
+ 
+memPage
+)
+
+121 
+	`wr™eBlock
+((
+fHªdË
+->
+curPagePos
+),fHªdË,
+memPage
+);
+
+122 
+	}
+}
+
+124 
+RC
+ 
+	$­³ndEm±yBlock
+(
+SM_FžeHªdË
+ *
+fHªdË
+)
+
+126 
+FILE
+* 
+fo
+ = 
+	`fÝ’
+(
+fHªdË
+->
+fžeName
+,"a+");
+
+127 
+fHªdË
+->
+tÙ®NumPages
+ += 1;
+
+128 
+cÚ‹Á
+ = "\0";
+
+129 if(
+	`f£ek
+(
+fo
+,0,
+SEEK_END
+)==0)
+
+131 
+	`fwr™e
+(
+cÚ‹Á
+,(cÚ‹Á),
+PAGE_SIZE
+,
+fo
+);
+
+133  
+RC_OK
+;
+
+134 
+	}
+}
+
+136 
+RC
+ 
+	$’su»C­ac™y
+(
+numb”OfPages
+, 
+SM_FžeHªdË
+ *
+fHªdË
+)
+
+138 
+FILE
+* 
+fo
+ = 
+	`fÝ’
+((
+fHªdË
+->
+fžeName
+),"a+");
+
+139 
+numPageAdd
+ = 
+numb”OfPages
+ - 
+fHªdË
+->
+tÙ®NumPages
+;
+
+140 
+i
+=0; i<
+numPageAdd
+; i++)
+
+142 
+	`­³ndEm±yBlock
+(
+fHªdË
+);
+
+144 
+	}
+}
 
 	@storage_mgr.h
 
@@ -1169,10 +1813,11 @@ TEST_INFO
 1
 .
 0
-5
-65
+6
+79
 dberror.c
 dberror.h
+storage_mgr.c
 storage_mgr.h
 test_assign1_1.c
 test_helper.h
