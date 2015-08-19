@@ -1,6 +1,7 @@
 #ifndef RECORD_MGR_H
 #define RECORD_MGR_H
 
+//
 #include "dberror.h"
 #include "expr.h"
 #include "tables.h"
